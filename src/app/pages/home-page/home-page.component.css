@@ -1,0 +1,31 @@
+.home-page {
+    text-align: center;
+    padding: 50px;
+  }
+  
+  .home-page h2 {
+    font-size: 32px;
+    color: #333;
+  }
+  
+  .home-page p {
+    font-size: 18px;
+    color: #555;
+  }
+  
+  .action-buttons {
+    margin-top: 20px;
+  }
+  
+  .action-buttons .btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 0 10px;
+  }
+  
+  .action-buttons .btn:hover {
+    background-color: #0056b3;
+  }

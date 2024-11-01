@@ -1,0 +1,33 @@
+<div class="profile-page">
+    <h2>User Profile</h2>
+  
+    <div class="profile-section">
+      <h3>Settings</h3>
+      <form>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" value="JohnDoe" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" value="john.doe@example.com" />
+        </div>
+        <button type="submit" class="btn">Save Changes</button>
+      </form>
+    </div>
+  
+    <div class="profile-section">
+      <h3>Your Ads</h3>
+      <ul>
+        <li *ngFor="let ad of ads">title - ad.status</li>
+      </ul>
+      
+    </div>
+  
+    <div class="profile-section">
+      <h3>Your Foster Care Requests</h3>
+      <ul>
+        <li *ngFor="let request of requests">{{ request.petName }} - {{ request.status }}</li>
+      </ul>
+    </div>
+  </div>
