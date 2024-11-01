@@ -1,0 +1,44 @@
+.pet-details-page {
+    padding: 30px;
+    text-align: center;
+  }
+  
+  .pet-image {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+  }
+  
+  .confirmation-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .pet-details-page {
+      padding: 20px;
+    }
+  
+    .pet-image {
+      max-width: 100%;
+    }
+  
+    .confirmation-modal {
+      padding: 15px;
+    }
+  }

@@ -1,0 +1,14 @@
+<div class="pet-details-page">
+    <h2>(name)Guchi</h2>
+    <img src="https://avatars.mds.yandex.net/i?id=e2523a6042990badcc0de02187d39d70a762470a-9107157-images-thumbs&n=13" alt="{{ pet.name }}" class="pet-image" />
+    <p>description: dog ...dgdgdfghhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh.......</p>
+    <button class="btn" (click)="confirmBooking()">Book</button>
+  
+    <div  class="confirmation-modal">
+      <div class="modal-content">
+        <h3>Booking Confirmed!</h3>
+        <p>You have successfully booked {{ pet.name }}.</p>
+        <button class="btn" (click)="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
