@@ -25,3 +25,32 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+## Android
+
+**Install Android Studio**
+Install latest version from Android Studio [website](https://developer.android.com/studio).
+
+**Install dependencies**:
+```bash
+npm install
+```
+
+**Build the Angular application**:
+```bash
+ng build --configuration production
+```
+or simple:
+```bash
+ng build
+```
+
+**Synchronize Capacitor with the Android project**:
+```bash
+npx cap sync android
+```
+
+**Open the Android project**:
+```bash
+npx cap open android
+```

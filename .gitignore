@@ -41,3 +41,6 @@ testem.log
 .DS_Store
 Thumbs.db
 
+
+#Android generated
+android/app/capacitor.build.gradle

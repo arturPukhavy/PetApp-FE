@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">PetApp</string>
+    <string name="title_activity_main">PetApp</string>
+    <string name="package_name">com.petapp.fe</string>
+    <string name="custom_url_scheme">com.petapp.fe</string>
+</resources>
