@@ -1,10 +1,22 @@
+
+
 /* Global Styles */
 html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: Arial, sans-serif;
-  }
+  height: 100%;
+  overflow: auto;
+}
+
+.app-root {
+  display: block;
+  height: 100%;
+}
+
+.web-content {
+  display: block;
+  padding: 20px;
+  overflow: auto;
+  height: calc(100vh - 100px); /* Adjust based on your header/footer height */
+}
   
   /* Header Styles */
   .header {
@@ -187,6 +199,18 @@ html, body {
     background-color: #0056b3;
   }
   
+  .ion-content {
+    --padding-start: 16px;
+    --padding-end: 16px;
+    --padding-top: 16px;
+    --padding-bottom: 16px;
+  }
+  
+  .ion-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
   /* Responsive adjustments */
   @media (max-width: 768px) {
     .header {

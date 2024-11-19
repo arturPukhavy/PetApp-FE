@@ -1,17 +1,39 @@
-<header class="header">
-  <div class="header-container">
-    <div class="logo">
-      <h1>PetCare App</h1>
+<!-- Web Header -->
+<ng-container *ngIf="!isNative">
+  <header class="header">
+    <div class="header-container">
+      <div class="logo">
+        <h1>PetCare App</h1>
+      </div>
+      <div class="search-bar">
+        <input type="text" placeholder="Search for pets, owners..." />
+        <button>🔍</button>
+      </div>
+      <nav class="nav-tabs">
+        <a routerLink="/">Home</a>
+        <a routerLink="/search">Map</a>
+        <a routerLink="/profile">Profile</a>
+        <a routerLink="/settings">Settings</a>
+      </nav>
     </div>
-    <div class="search-bar">
-      <input type="text" placeholder="Search for pets, owners..." />
-      <button>🔍</button>
-    </div>
-    <nav class="nav-tabs">
-      <a href="/" routerLink="/">Home</a>
-      <a href="/search" routerLink="/search">Map</a>
-      <a href="/profile" routerLink="/profile">Profile</a>
-      <a href="/settings" routerLink="/settings">Settings</a>
-    </nav>
-  </div>
-</header>
+  </header>
+</ng-container>
+
+<!-- Mobile Header (Ionic) -->
+<ng-container *ngIf="isNative">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>PetCare App</ion-title>
+      <ion-buttons slot="start">
+        <ion-button>
+          <ion-icon name="menu-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button>
+          <ion-icon name="search-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+</ng-container>

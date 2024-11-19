@@ -1,20 +1,55 @@
-<app-header></app-header>
-<ion-content>
-  <app-filters></app-filters>
-  <app-search-results-page></app-search-results-page>
-</ion-content>
+<ng-container *ngIf="!isNative">
+  <app-header></app-header>
+  <div class="web-content">
+    <app-filters></app-filters>
+    <app-search-results-page></app-search-results-page>
+  </div>
+  <footer class="web-footer">
+    <!-- Your web footer content here -->
+    <h3>Pet App</h3>
+    <nav>
+      <a routerLink="/">Home</a> |
+      <a routerLink="/search">Search</a> |
+      <a routerLink="/profile">Profile</a>
+    </nav>
+  </footer>
+</ng-container>
 
-<ion-toolbar position="bottom">
-    <!-- Your header content here -->
-    <ion-title>Pet App</ion-title>
-    <ion-buttons slot="start">
-      <ion-button>
-        <ion-icon name="menu-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button>
-        <ion-icon name="search-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
+<!-- Mobile layout -->
+<ng-container *ngIf="isNative">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>PetCare App</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div class="web-content">
+    <app-filters></app-filters>
+    <app-search-results-page></app-search-results-page>
+  </div>
+
+  <ion-content>
+    <ion-tabs>
+      <ion-tab-bar slot="bottom">
+        <ion-tab-button tab="home">
+          <ion-icon name="home-outline"></ion-icon>
+          <ion-label>Home</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button tab="search">
+          <ion-icon name="search-outline"></ion-icon>
+          <ion-label>Map</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button tab="profile">
+          <ion-icon name="person-outline"></ion-icon>
+          <ion-label>Profile</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button tab="settings">
+          <ion-icon name="settings-outline"></ion-icon>
+          <ion-label>Settings</ion-label>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </ion-content>
+</ng-container>

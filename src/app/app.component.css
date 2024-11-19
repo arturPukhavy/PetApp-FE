@@ -1,0 +1,12 @@
+.ion-content {
+    --padding-start: 16px;
+    --padding-end: 16px;
+    --padding-top: 16px;
+    --padding-bottom: 16px;
+  }
+  
+  .ion-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }

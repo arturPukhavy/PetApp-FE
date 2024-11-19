@@ -1,0 +1,12 @@
+// Import web-specific global styles (for browser)
+@import 'src/styles/web-styles.scss';
+
+// Import Ionic global styles only if running in a native environment
+@import '~@ionic/angular/css/core.css';
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/flex-utils.css';
+@import '~@ionic/angular/css/display.css';
+
