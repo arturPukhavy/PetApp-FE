@@ -1,12 +1,155 @@
-// Import web-specific global styles (for browser)
-@import 'src/styles/web-styles.scss';
+@import '@ionic/angular/css/core.css';
+@import '@ionic/angular/css/normalize.css';
+@import '@ionic/angular/css/structure.css';
+@import '@ionic/angular/css/typography.css';
+@import '@ionic/angular/css/padding.css';
+@import '@ionic/angular/css/flex-utils.css';
+@import '@ionic/angular/css/display.css';
 
-// Import Ionic global styles only if running in a native environment
-@import '~@ionic/angular/css/core.css';
-@import '~@ionic/angular/css/normalize.css';
-@import '~@ionic/angular/css/structure.css';
-@import '~@ionic/angular/css/typography.css';
-@import '~@ionic/angular/css/padding.css';
-@import '~@ionic/angular/css/flex-utils.css';
-@import '~@ionic/angular/css/display.css';
+// Custom Styles
+@import 'web-styles.css';
+@import 'android-styles.scss';
 
+/* General Content Styling */
+ion-content {
+  --padding-top: 16px;
+  --padding-end: 16px;
+  --padding-start: 16px;
+  --padding-bottom: 80px; /* Space for footer and tabs */
+  background-color: #f8f9fa; /* Light gray background */
+}
+
+/* Header Styles */
+ion-header {
+  ion-toolbar {
+    --background: #007bff;
+    --color: #ffffff;
+
+    ion-title {
+      font-size: 22px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    ion-buttons {
+      --color: #ffffff;
+    }
+  }
+}
+
+/* Footer and Tab Bar */
+ion-footer,
+ion-tabs {
+  --background: #007bff;
+  --color: #ffffff;
+
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  z-index: 10; /* Ensure footer is above content */
+}
+
+ion-tab-bar {
+  --background: #007bff;
+  --color: #ffffff;
+  --color-selected: #ffcc00;
+  height: 56px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+ion-tab-button {
+  --color: #ffffff;
+  --color-selected: #ffcc00;
+}
+
+/* Filters Section */
+.filters-page {
+  text-align: center;
+
+  .form-group {
+    margin-bottom: 16px;
+    text-align: left;
+
+    input,
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      margin-top: 8px;
+    }
+  }
+
+  button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+}
+
+/* Search Results Section */
+.search-results-page {
+  margin-top: 24px;
+
+  .results-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 16px;
+
+    .result-item {
+      background-color: #ffffff;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 16px;
+      width: 100%;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+      @media (min-width: 768px) {
+        width: calc(50% - 8px);
+      }
+
+      .pet-image {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+      }
+
+      .pet-info {
+        h3 {
+          margin: 12px 0 8px;
+          color: #333333;
+          font-size: 18px;
+        }
+
+        p {
+          color: #555555;
+          font-size: 14px;
+        }
+
+        .btn {
+          background-color: #28a745;
+          color: #ffffff;
+          padding: 10px 14px;
+          text-align: center;
+          border-radius: 5px;
+          margin-top: 12px;
+          font-size: 14px;
+
+          &:hover {
+            background-color: #218838;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,3 +1,4 @@
+<!-- Web layout -->
 <ng-container *ngIf="!isNative">
   <app-header></app-header>
   <div class="web-content">
@@ -5,31 +6,38 @@
     <app-search-results-page></app-search-results-page>
   </div>
   <footer class="web-footer">
-    <!-- Your web footer content here -->
     <h3>Pet App</h3>
     <nav>
-      <a routerLink="/">Home</a> |
-      <a routerLink="/search">Search</a> |
+      <a routerLink="/">Home</a>
+      <a routerLink="/search">Search</a>
       <a routerLink="/profile">Profile</a>
     </nav>
   </footer>
 </ng-container>
 
-<!-- Mobile layout -->
+<!-- Mobile layout (Native Android) -->
 <ng-container *ngIf="isNative">
   <ion-header>
     <ion-toolbar>
-      <ion-title>PetCare App</ion-title>
+      <ion-buttons slot="start">
+        <ion-button>
+          <ion-icon name="menu-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title class="ion-text-center">PetCare App</ion-title>
+      <ion-buttons slot="end">
+        <ion-button>
+          <ion-icon name="search-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
-  <div class="web-content">
-    <app-filters></app-filters>
-    <app-search-results-page></app-search-results-page>
-  </div>
 
   <ion-content>
+    <app-filters></app-filters>
+    <app-search-results-page></app-search-results-page>
     <ion-tabs>
-      <ion-tab-bar slot="bottom">
+      <ion-tab-bar slot="bottom" class="ion-padding">
         <ion-tab-button tab="home">
           <ion-icon name="home-outline"></ion-icon>
           <ion-label>Home</ion-label>

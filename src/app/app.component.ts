@@ -8,6 +8,7 @@ import { SearchResultsPageComponent } from "./pages/search-results-page/search-r
 import { IonAccordion, IonAccordionGroup, IonicModule, Platform } from '@ionic/angular';
 
 import { CommonModule } from '@angular/common';
+import { Capacitor } from '@capacitor/core';
 
 
 @Component({
@@ -22,6 +23,17 @@ export class AppComponent {
   isNative: boolean;
 
   constructor(private platform: Platform) {
-    this.isNative = this.platform.is('capacitor');
+    this.isNative = Capacitor.isNativePlatform();
+  }
+
+  initializeApp() {
+    if (this.isNative) {
+      document.body.classList.add('native');
+      if (this.platform.is('android')) {
+        document.body.classList.add('android');
+      }
+    } else {
+      document.body.classList.add('web');
+    }
   }
 }
