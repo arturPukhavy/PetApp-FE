@@ -1,4 +1,4 @@
-name: Deploy Angular App to S3
+name: PetApp-FE (CD)
 
 on:
   push:
