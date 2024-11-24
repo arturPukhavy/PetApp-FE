@@ -1,50 +1,51 @@
 .filters-page {
-    padding: 30px;
+  padding: 30px;
+}
+
+.filters-page h2 {
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group .age-inputs {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-group .age-inputs input {
+  width: 48%;
+}
+
+.btn {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .filters-page {
+    padding: 20px;
   }
-  
-  .filters-page h2 {
-    color: #333;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  .form-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
+
   .form-group input,
   .form-group select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    padding: 10px;
   }
-  
-  .btn {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .btn:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .filters-page {
-      padding: 20px;
-    }
-  
-    .form-group input,
-    .form-group select {
-      padding: 10px;
-    }
-  }
+}

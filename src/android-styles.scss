@@ -1,0 +1,77 @@
+/* Android-specific styles */
+
+/* Header Styling */
+ion-header {
+  ion-toolbar {
+    --background: #007bff;
+    --color: #ffffff;
+
+    ion-title {
+      font-size: 22px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    ion-buttons {
+      --color: #ffffff;
+    }
+  }
+}
+
+/* General Layout */
+ion-content {
+  --padding-bottom: 80px; /* Add space for tabs and footer */
+  background-color: #f8f9fa;
+}
+
+/* Footer */
+ion-footer {
+  --background: #007bff;
+  --color: #ffffff;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 10; /* Ensure footer stays on top */
+}
+
+/* Tabs */
+ion-tabs {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+ion-tab-bar {
+  --background: #007bff;
+  --color: #ffffff;
+  --color-selected: #ffcc00;
+  height: 56px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Form Controls */
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+/* Buttons */
+button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+}
