@@ -1,0 +1,7 @@
+<div class="modal-overlay" (click)="onClose()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h3>{{ recipientName || 'this guy'  }} has received your request.</h3>
+    <p>After confirmation, a chat will be available between you and {{ recipientName || 'this guy' }}.</p>
+    <button class="btn" (click)="onClose()">Close</button>
+  </div>
+</div>

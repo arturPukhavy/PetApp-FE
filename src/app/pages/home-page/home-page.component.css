@@ -1,31 +1,101 @@
 .home-page {
-    text-align: center;
-    padding: 50px;
+  text-align: center;
+  padding: 50px;
+  background-color: #f4f4f4;
+}
+
+.home-page h2 {
+  font-size: 32px;
+  color: #333;
+}
+
+.home-page p {
+  font-size: 18px;
+  color: #555;
+}
+
+.action-buttons {
+  margin-top: 20px;
+}
+
+.action-buttons .btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  margin: 5px 10px;
+}
+
+.action-buttons .btn:hover {
+  background-color: #0056b3;
+}
+
+.profiles-section {
+  margin-top: 40px;
+}
+
+.profiles-section h3 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.profiles-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.profile-card {
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  width: 200px; /* Adjust width as needed */
+  text-align: center;
+}
+
+.profile-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.profile-card h4 {
+  margin: 10px 0;
+}
+
+.profile-card p {
+  color: #555;
+}
+
+.profile-card button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #28a745; /* Green button for contact */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.profile-card button:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .home-page {
+    padding: 30px;
   }
-  
-  .home-page h2 {
-    font-size: 32px;
-    color: #333;
+
+  .profiles-list {
+    flex-direction: column;
+    align-items: center;
   }
-  
-  .home-page p {
-    font-size: 18px;
-    color: #555;
+
+  .profile-card {
+    width: 90%; /* Full width on mobile */
   }
-  
-  .action-buttons {
-    margin-top: 20px;
-  }
-  
-  .action-buttons .btn {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    margin: 0 10px;
-  }
-  
-  .action-buttons .btn:hover {
-    background-color: #0056b3;
-  }
+}

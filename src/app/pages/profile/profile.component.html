@@ -1,33 +1,64 @@
 <div class="profile-page">
-    <h2>User Profile</h2>
-  
-    <div class="profile-section">
-      <h3>Settings</h3>
-      <form>
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input type="text" id="username" value="JohnDoe" />
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" value="john.doe@example.com" />
-        </div>
-        <button type="submit" class="btn">Save Changes</button>
-      </form>
+  <h2>User Profile</h2>
+
+  <div class="profile-header">
+    <div class="profile-photo">
+      <img [src]="'https://static1.bigstockphoto.com/8/7/5/large1500/5781083.jpg'" alt="Profile Photo" />
     </div>
-  
-    <div class="profile-section">
-      <h3>Your Ads</h3>
-      <ul>
-        <li *ngFor="let ad of ads">title - ad.status</li>
-      </ul>
-      
+    <div class="profile-info">
+      <h3>User Information</h3>
+      <p><strong>Username:</strong> JohnDoe</p>
+      <p><strong>Email:</strong> john.doeexamsle.com</p>
+      <p><strong>Role:</strong> Sitter / Pet Owner</p>
+      <p><strong>Location:</strong> Barysau</p>
     </div>
-  
-    <div class="profile-section">
-      <h3>Your Foster Care Requests</h3>
-      <ul>
-        <li *ngFor="let request of requests">{{ request.petName }} - {{ request.status }}</li>
-      </ul>
-    </div>
+    <button class="btn" (click)="isEditing = !isEditing">
+      {{ isEditing ? 'Cancel' : 'Edit Profile' }}
+    </button>
   </div>
+
+  <div *ngIf="isEditing" class="profile-section">
+    <h3>Edit Profile</h3>
+    <form>
+      <div class="form-group">
+        <label for="edit-username">Username</label>
+        <input type="text" id="edit-username" [(ngModel)]="username" />
+      </div>
+      <div class="form-group">
+        <label for="edit-email">Email</label>
+        <input type="email" id="edit-email" [(ngModel)]="email" />
+      </div>
+      <div class="form-group">
+        <label for="language">Role</label>
+        <select id="language">
+          <option value="">Sitter</option>
+          <option value="">Pet Owner</option>
+        </select>
+      </div>
+      <button type="submit" class="btn" (click)="onClose()">Save Changes</button>
+    </form>
+  </div>
+
+  <div class="profile-section">
+    <h3>About Your Pet</h3>
+    <p><strong>Name:</strong> Fido</p>
+    <p><strong>Breed:</strong> Golden Retriever</p>
+    <p><strong>Age:</strong> 3 years</p>
+    <p><strong>Case History:</strong> No medical issues. Friendly with other pets.</p>
+  </div>
+
+  <div class="profile-section">
+    <h3>Foster Care Announcements</h3>
+    <p>Opportunity to advertise for foster care services or looking for a sitter.</p>
+    <button class="btn" routerLink="/form" routerLinkActive="active">Create Announcement</button>
+  </div>
+
+  <div class="profile-section">
+    <h3>Suggestions</h3>
+    <p>Your suggestions and responses to announcements will appear here.</p>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+    </ul>
+  </div>
+</div>

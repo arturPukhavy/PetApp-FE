@@ -1,18 +1,9 @@
 <!-- Web layout -->
 <ng-container *ngIf="!isNative">
-  <app-header></app-header>
   <div class="web-content">
-    <app-filters></app-filters>
-    <app-search-results-page></app-search-results-page>
+    <app-header></app-header>
+    <router-outlet></router-outlet>
   </div>
-  <footer class="web-footer">
-    <h3>Pet App</h3>
-    <nav>
-      <a routerLink="/">Home</a>
-      <a routerLink="/search">Search</a>
-      <a routerLink="/profile">Profile</a>
-    </nav>
-  </footer>
 </ng-container>
 
 <!-- Mobile layout (Native Android) -->
@@ -34,8 +25,7 @@
   </ion-header>
 
   <ion-content>
-    <app-filters></app-filters>
-    <app-search-results-page></app-search-results-page>
+    <router-outlet></router-outlet>
     <ion-tabs>
       <ion-tab-bar slot="bottom" class="ion-padding">
         <ion-tab-button tab="home">
