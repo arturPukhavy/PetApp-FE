@@ -1,0 +1,16 @@
+<div class="map-page">
+  <h2>Find Nearby Sitters or Pets in Need</h2>
+
+  <div class="toggle-buttons">
+    <button class="btn" (click)="showSitters()">Show Nearest Sitters</button> |
+    <button class="btn" (click)="showPetsInNeed()">Show Pets Needing Sitters</button>
+  </div>
+
+  <div id="map" class="map-container"></div>
+
+  <div class="info-box" *ngIf="selectedLocation">
+    <h3>{{ selectedLocation.name }}</h3>
+    <p>{{ selectedLocation.description }}</p>
+    <button class="btn" (click)="contactOwner()">Contact Owner</button>
+  </div>
+</div>

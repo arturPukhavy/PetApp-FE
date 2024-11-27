@@ -1,12 +1,25 @@
-.pet-details-page {
+.announcement-page {
     padding: 30px;
     text-align: center;
+    background-color: #f9f9f9;
   }
   
-  .pet-image {
+  .sitter-image {
     width: 100%;
     max-width: 400px;
     border-radius: 10px;
+  }
+  
+  .sitter-details, .request-details {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  h3 {
+    color: #333;
   }
   
   .confirmation-modal {
@@ -30,11 +43,11 @@
   
   /* Responsive adjustments */
   @media (max-width: 768px) {
-    .pet-details-page {
+    .announcement-page {
       padding: 20px;
     }
   
-    .pet-image {
+    .sitter-image {
       max-width: 100%;
     }
   
