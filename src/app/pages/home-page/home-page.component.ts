@@ -2,11 +2,13 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ModalComponent } from '../../shared/components/modal/modal.component';
 import { RouterModule } from '@angular/router';
+import { MapComponent } from './map/map.component';
+import { FilterComponent } from './filter/filter.component';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [CommonModule, ModalComponent, RouterModule],
+  imports: [CommonModule, ModalComponent, RouterModule, MapComponent, FilterComponent],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
 })

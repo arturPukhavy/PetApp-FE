@@ -14,6 +14,7 @@ export class MapComponent implements OnInit {
   zoom = 12; // Default zoom level
   selectedLocation: any; // To hold the currently selected location
   locations = []; // Array to hold markers
+  showSitter: boolean = true;
   
   // Sample data
   sitters = [
@@ -28,6 +29,15 @@ export class MapComponent implements OnInit {
 
   ngOnInit(): void {
     
+  }
+
+  toggleDisplay() {
+    this.showSitter = !this.showSitter;
+    if (this.showSitter) {
+      this.showSitters(); // Call the method to show sitters
+    } else {
+      this.showPetsInNeed(); // Call the method to show pets in need
+    }
   }
 
   // Show sitters on the map
