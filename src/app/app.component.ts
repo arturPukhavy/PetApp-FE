@@ -8,11 +8,11 @@ import { HeaderComponent } from './shared/components/header/header.component';
 
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [HeaderComponent, IonicModule, CommonModule, RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+    standalone: true,
+    selector: 'app-root',
+    imports: [HeaderComponent, IonicModule, CommonModule, RouterOutlet],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'PetApp';

@@ -5,11 +5,11 @@ import { FormsModule, NgModel } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-profile',
-  standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
-  templateUrl: './profile.component.html',
-  styleUrl: './profile.component.css'
+    standalone: true,
+    selector: 'app-profile',
+    imports: [CommonModule, FormsModule, RouterModule],
+    templateUrl: './profile.component.html',
+    styleUrl: './profile.component.css'
 })
 export class ProfileComponent {
   isEditing = false;

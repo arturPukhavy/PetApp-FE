@@ -4,11 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  standalone: true,
-  imports: [RouterModule, CommonModule, FormsModule],
-  selector: 'app-filter',
-  templateUrl: './filter.component.html',
-  styleUrls: ['./filter.component.scss'],
+    imports: [RouterModule, CommonModule, FormsModule],
+    standalone: true,
+    selector: 'app-filter',
+    templateUrl: './filter.component.html',
+    styleUrls: ['./filter.component.scss']
 })
 export class FilterComponent implements OnInit {
   selectedType = '';

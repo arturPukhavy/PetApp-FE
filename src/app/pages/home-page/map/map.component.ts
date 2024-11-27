@@ -3,11 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { GoogleMapsModule } from '@angular/google-maps';
 
 @Component({
-  standalone: true,
-  imports: [CommonModule, GoogleMapsModule],
-  selector: 'app-map',
-  templateUrl: './map.component.html',
-  styleUrls: ['./map.component.scss'],
+    imports: [CommonModule, GoogleMapsModule],
+    standalone: true,
+    selector: 'app-map',
+    templateUrl: './map.component.html',
+    styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements OnInit {
   center = { lat: 37.7749, lng: -122.4194 }; // Default center

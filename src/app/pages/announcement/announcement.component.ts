@@ -4,11 +4,11 @@ import { ModalComponent } from '../../shared/components/modal/modal.component';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  standalone: true,
-  imports: [CommonModule, ModalComponent],
-  selector: 'app-announcement',
-  templateUrl: './announcement.component.html',
-  styleUrls: ['./announcement.component.scss'],
+    imports: [CommonModule, ModalComponent],
+    standalone: true,
+    selector: 'app-announcement',
+    templateUrl: './announcement.component.html',
+    styleUrls: ['./announcement.component.scss']
 })
 export class AnnouncementComponent  implements OnInit {
   bookingConfirmed = false;

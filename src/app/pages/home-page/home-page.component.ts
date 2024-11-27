@@ -6,11 +6,11 @@ import { MapComponent } from './map/map.component';
 import { FilterComponent } from './filter/filter.component';
 
 @Component({
-  selector: 'app-home-page',
-  standalone: true,
-  imports: [CommonModule, ModalComponent, RouterModule, MapComponent, FilterComponent],
-  templateUrl: './home-page.component.html',
-  styleUrl: './home-page.component.css'
+    selector: 'app-home-page',
+    standalone: true,
+    imports: [CommonModule, ModalComponent, RouterModule, MapComponent, FilterComponent],
+    templateUrl: './home-page.component.html',
+    styleUrl: './home-page.component.css'
 })
 export class HomePageComponent {
   sitters = [

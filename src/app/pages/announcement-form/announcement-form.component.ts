@@ -3,11 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  standalone: true,
-  imports: [CommonModule, FormsModule],
-  selector: 'app-announcement-form',
-  templateUrl: './announcement-form.component.html',
-  styleUrls: ['./announcement-form.component.scss'],
+    imports: [CommonModule, FormsModule],
+    standalone: true,
+    selector: 'app-announcement-form',
+    templateUrl: './announcement-form.component.html',
+    styleUrls: ['./announcement-form.component.scss']
 })
 export class AnnouncementFormComponent  implements OnInit {
 
