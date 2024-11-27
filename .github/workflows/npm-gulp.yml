@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main  # Set this to the branch you want to deploy from
+  pull_request:
+    branches:
+      - main  # Trigger on pull requests to main
 
 jobs:
   build-and-deploy:
@@ -25,6 +28,7 @@ jobs:
       run: npm run build -- --configuration=production
 
     - name: Deploy to S3
+      if: success()  # Only run this step if previous steps succeeded
       uses: jakejarvis/s3-sync-action@master
       with:
         args: --delete
@@ -34,4 +38,3 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: ${{ secrets.AWS_REGION }}
         SOURCE_DIR: 'dist/pet-app/browser'
-
