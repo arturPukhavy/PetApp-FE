@@ -7,8 +7,18 @@
       </div>
       <nav class="nav-tabs">
         <a routerLink="/home" routerLinkActive="active">Home</a>
+        <a routerLink="/chat" routerLinkActive="active">Chat</a>
         <a routerLink="/profile" routerLinkActive="active">Profile</a>
-        <a routerLink="/settings" routerLinkActive="active">Settings</a>
+        <a routerLink="/sign-in" routerLinkActive="active">Sign in</a>
+        <div class="language-selector">
+          <select id="language" (change)="changeLanguage($event)">
+            <option value="en">ENG</option>
+            <option value="be">BLR</option>
+            <option value="uk">UKR</option>
+            <option value="pl">POL</option>
+            <!-- Add more languages as needed -->
+          </select>
+        </div>
       </nav>
     </div>
   </header>
@@ -27,6 +37,15 @@
       <ion-buttons slot="end">
         <ion-button>
           <ion-icon name="search-outline"></ion-icon>
+        </ion-button>
+        <ion-button>
+          <select id="language" (change)="changeLanguage($event)">
+            <option value="en">ENG</option>
+            <option value="be">BLR</option>
+            <option value="uk">UKR</option>
+            <option value="pl">POL</option>
+            <!-- Add more languages as needed -->
+          </select>
         </ion-button>
       </ion-buttons>
     </ion-toolbar>

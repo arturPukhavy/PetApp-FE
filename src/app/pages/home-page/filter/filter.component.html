@@ -1,7 +1,7 @@
 <div class="web-content">
   <div class="filters-page">
     <h2>Filters</h2>
-    <form (submit)="applyFilters($event)" *ngIf="!findSitter">
+    <form (submit)="applyFilters($event)" *ngIf="!sitterFilter">
       <div class="form-group">
         <label for="type">Type</label>
         <select id="type" >
@@ -39,7 +39,7 @@
       <button type="submit" class="btn">Apply Filters</button>
     </form>
 
-    <form (submit)="applyFilters($event)" *ngIf="findSitter">
+    <form (submit)="applyFilters($event)" *ngIf="sitterFilter">
       <div class="form-group">
         <label for="type">Type</label>
         <select id="type">

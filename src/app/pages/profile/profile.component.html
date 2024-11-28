@@ -1,15 +1,24 @@
 <div class="profile-page">
   <h2>User Profile</h2>
 
+  <div class="toggle-buttons">
+    <button class="role-button" [class.active]="role === 'sitter'" [disabled]="role === 'sitter'" (click)="toggleRole()">
+      Sitter
+    </button>
+    <button class="role-button" [class.active]="role === 'petOwner'" [disabled]="role === 'petOwner'" (click)="toggleRole()">
+      Pet Owner
+    </button>
+  </div>
+
   <div class="profile-header">
     <div class="profile-photo">
       <img [src]="'https://static1.bigstockphoto.com/8/7/5/large1500/5781083.jpg'" alt="Profile Photo" />
     </div>
     <div class="profile-info">
       <h3>User Information</h3>
-      <p><strong>Username:</strong> JohnDoe</p>
-      <p><strong>Email:</strong> john.doeexamsle.com</p>
-      <p><strong>Role:</strong> Sitter / Pet Owner</p>
+      <p><strong>Username:</strong> {{ username }}</p>
+      <p><strong>Email:</strong> {{ email }}</p>
+      <p><strong>Role:</strong> {{ role === 'sitter' ? 'Sitter' : 'Pet Owner' }}</p>
       <p><strong>Location:</strong> Barysau</p>
     </div>
     <button class="btn" (click)="isEditing = !isEditing">
@@ -22,43 +31,66 @@
     <form>
       <div class="form-group">
         <label for="edit-username">Username</label>
-        <input type="text" id="edit-username"/>
+        <input type="text" id="edit-username" [(ngModel)]="username"/>
       </div>
       <div class="form-group">
         <label for="edit-email">Email</label>
-        <input type="email" id="edit-email"/>
+        <input type="email" id="edit-email" [(ngModel)]="email"/>
       </div>
       <div class="form-group">
-        <label for="language">Role</label>
-        <select id="language">
-          <option value="">Sitter</option>
-          <option value="">Pet Owner</option>
+        <label for="role">Type of pet</label>
+        <select id="role">
+          <option value="sitter">Dog</option>
+          <option value="petOwner">Cat</option>
+          <option value="other">Other</option>
         </select>
       </div>
       <button type="submit" class="btn" (click)="onClose()">Save Changes</button>
     </form>
   </div>
 
-  <div class="profile-section">
+  <div *ngIf="role === 'petOwner'" class="profile-section">
     <h3>About Your Pet</h3>
-    <p><strong>Name:</strong> Fido</p>
-    <p><strong>Breed:</strong> Golden Retriever</p>
-    <p><strong>Age:</strong> 3 years</p>
-    <p><strong>Case History:</strong> No medical issues. Friendly with other pets.</p>
+    <p><strong>Type of Pet:</strong> Dog</p>
+    <p><strong>Name:</strong> {{ petInfo.name }}</p>
+    <p><strong>Breed:</strong> {{ petInfo.breed }}</p>
+    <p><strong>Age:</strong> {{ petInfo.age }}</p>
+    <p><strong>About Pet:</strong> {{ petInfo.caseHistory }}</p>
   </div>
 
-  <div class="profile-section">
+  <div *ngIf="role === 'petOwner'" class="profile-section">
     <h3>Foster Care Announcements</h3>
-    <p>Opportunity to advertise for foster care services or looking for a sitter.</p>
     <button class="btn" routerLink="/form" routerLinkActive="active">Create Announcement</button>
+  </div>
+
+  <div *ngIf="role === 'sitter'" class="profile-section">
+    <h3>About You</h3>
+    <p><strong>Description:</strong> {{ sitterInfo.description }}</p>
+    <p><strong>Experience:</strong> {{ sitterInfo.experience }}</p>
+    <p><strong>Working Hours:</strong> {{ sitterInfo.workingHours }}</p>
+    <div class="availability">
+      <label>
+        <input type="checkbox" (click)="toggleAvailability()" />
+        <strong>Available</strong>
+      </label>
+      <span class="availability-message" *ngIf="available">
+        You are now available in search for pet owners
+      </span>
+      <span class="non-availability-message" *ngIf="!available">
+        You are currently not available in the search for pet owners
+      </span>
+    </div>
   </div>
 
   <div class="profile-section">
     <h3>Suggestions</h3>
-    <p>Your suggestions and responses to announcements will appear here.</p>
     <ul>
-      <li>1</li>
-      <li>2</li>
+      <li *ngFor="let suggestion of suggestions">{{ suggestion.text }}</li>
     </ul>
+  </div>
+
+  <div class="profile-section">
+    <h3>Case History</h3>
+    <p>History of cases will be displayed here.</p>
   </div>
 </div>

@@ -13,7 +13,7 @@ html, body {
   display: block;
   padding: 20px;
   overflow: auto;
-  height: calc(100vh - 100px); /* Adjust based on your header/footer height */
+  max-height: 700px;
 }
 
 .web-footer {
@@ -139,11 +139,6 @@ html, body {
   background-color: #0056b3;
 }
 
-/* Search Results Styles */
-.search-results-page {
-  padding: 30px;
-}
-
 .results-list {
   display: flex;
   flex-wrap: wrap;
@@ -233,9 +228,6 @@ html, body {
     padding: 20px;
   }
 
-  .search-results-page {
-    padding: 20px;
-  }
 
   .result-item {
     width: calc(100% - 20px); /* Full width on mobile */

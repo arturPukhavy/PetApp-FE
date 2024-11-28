@@ -10,26 +10,27 @@
     <div class="map-column">
       <app-map></app-map>
       <div class="profiles-section">
-        <h3>Available Sitters</h3>
-        <div class="profiles-list">
+
+        <h3 *ngIf="showSitter">Available Sitters</h3>
+        <div *ngIf="showSitter" class="profiles-list">
           <div class="profile-card" *ngFor="let sitter of sitters">
             <img [src]="'https://static1.bigstockphoto.com/8/7/5/large1500/5781083.jpg'" alt="{{ sitter.name }}'s Photo" />
             <h4>{{ sitter.name }}</h4>
             <p>{{ sitter.description }}</p>
             <p><strong>Rate:</strong> {{ sitter.rate | currency }}</p>
-            <button class="btn btn-primary" routerLink="/announcement" routerLinkActive="active">View Details</button>
+            <button class="btn btn-primary" routerLink="/sitter" routerLinkActive="active">View Details</button>
             <button class="btn" (click)="openModal(sitter.name)">Contact</button>
           </div>
         </div>
 
-        <h3>Pets Needing Sitters</h3>
-        <div class="profiles-list">
+        <h3 *ngIf="!showSitter">Pets Needing Sitters</h3>
+        <div *ngIf="!showSitter" class="profiles-list">
           <div class="profile-card" *ngFor="let pet of petsInNeed">
             <img [src]="'https://avatars.mds.yandex.net/i?id=e2523a6042990badcc0de02187d39d70a762470a-9107157-images-thumbs&n=13'" alt="{{ pet.name }}'s Photo" />
             <h4>{{ pet.name }}</h4>
             <p>{{ pet.description }}</p>
             <p><strong>Owner:</strong> {{ pet.ownerName }}</p>
-            <button class="btn btn-primary" routerLink="/announcement" routerLinkActive="active">View Details</button>
+            <button class="btn btn-primary" routerLink="/petowner" routerLinkActive="active">View Details</button>
             <button class="btn" (click)="openModal(pet.ownerName)">Contact</button>
           </div>
         </div>

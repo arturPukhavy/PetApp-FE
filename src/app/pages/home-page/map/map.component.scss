@@ -11,10 +11,36 @@
   position: relative; /* Allow positioning of the button */
 }
 
+.btn1 {
+  padding: 12px 12px;
+  font-size: 13px;
+  background-color: #2eed0c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn2 {
+  padding: 12px 12px;
+  font-size: 13px;
+  background-color: #ec6217;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
 .toggle-buttons {
   position: absolute; /* Position the button absolutely within the map */
   top: 10px;         /* Adjust the top margin */
-  left: 10px;        /* Adjust the left margin */
+  left: 50px;        /* Adjust the left margin */
   z-index: 10;       /* Ensure it appears above the map */
 }
 

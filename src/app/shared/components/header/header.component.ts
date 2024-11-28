@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { IonicModule, Platform } from '@ionic/angular';
 
 @Component({
@@ -15,6 +15,18 @@ export class HeaderComponent {
 
   constructor(private platform: Platform) {
     this.isNative = this.platform.is('capacitor');
+  }
+
+  changeLanguage(event: Event) {
+    const selectElement = event.target as HTMLSelectElement;
+    const language = selectElement.value;
+    
+    // Logic to change the application language
+    console.log('Selected language:', language);
+    
+    // Save language preference (optional)
+    localStorage.setItem('selectedLanguage', language);
+    
   }
 
 }

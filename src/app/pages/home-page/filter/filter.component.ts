@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { HomeService } from '../../../core/services/home.service';
 
 @Component({
     imports: [RouterModule, CommonModule, FormsModule],
@@ -15,11 +16,15 @@ export class FilterComponent implements OnInit {
   selectedBreed = '';
   ageMin: number | null = null;
   ageMax: number | null = null;
-  findSitter = true;
+  sitterFilter = true;
 
-  constructor() { }
+  constructor(private homeService: HomeService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.homeService.showSitter$.subscribe(showSitter => {
+      this.sitterFilter = showSitter;
+    });
+  }
 
   applyFilters(event: Event) {
     event.preventDefault();

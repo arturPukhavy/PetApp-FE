@@ -3,6 +3,32 @@
   background-color: #f4f4f4;
   border-radius: 8px;
 }
+.profile-page h2{
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.toggle-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.role-button {
+  background-color: #9299a1;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 0 10px;
+  font-size: 1.1em;
+}
+
+.role-button.active {
+  background-color: #2faf00; /* Darker blue when active */
+}
 
 .profile-header {
   display: flex;
@@ -31,6 +57,25 @@
 
 .profile-section h3 {
   color: #333;
+}
+
+.availability {
+  margin-top: 10px;
+  font-weight: bold; /* Highlight the availability section */
+}
+
+.availability-message {
+  display: block;
+  margin-top: 5px;
+  color: green; /* Color for the availability message */
+  font-weight: bold;
+}
+
+.non-availability-message {
+  display: block;
+  margin-top: 5px;
+  color: rgb(233, 4, 4); /* Color for the availability message */
+  font-weight: bold;
 }
 
 .form-group {
@@ -73,20 +118,6 @@ ul li {
   background-color: #f8f9fa;
   margin-bottom: 10px;
   border-radius: 5px;
-}
-
-.btn {
-  background-color: #007bff;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin: 10px; /* Add space above the button */
-}
-
-.btn:hover {
-  background-color: #0056b3;
 }
 
 /* Responsive adjustments */

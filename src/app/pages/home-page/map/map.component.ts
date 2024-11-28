@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { HomeService } from '../../../core/services/home.service';
+import * as L from 'leaflet';
 
 @Component({
     imports: [CommonModule, GoogleMapsModule],
@@ -10,6 +12,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
     styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements OnInit {
+  map: L.Map;
   center = { lat: 37.7749, lng: -122.4194 }; // Default center
   zoom = 12; // Default zoom level
   selectedLocation: any; // To hold the currently selected location
@@ -27,62 +30,61 @@ export class MapComponent implements OnInit {
     { name: 'Mittens', lat: 37.7549, lng: -122.4194, description: 'Cat needing a sitter' }
   ];
 
+  constructor(private homeService: HomeService) {}
+
   ngOnInit(): void {
-    
+    this.initMap();
   }
 
   toggleDisplay() {
+    this.homeService.toggleDisplay();
     this.showSitter = !this.showSitter;
     if (this.showSitter) {
-      this.showSitters(); // Call the method to show sitters
+      this.loadMarkers(this.sitters); // Load sitters
     } else {
-      this.showPetsInNeed(); // Call the method to show pets in need
+      this.loadMarkers(this.petsInNeed); // Load pets
     }
   }
 
-  // Show sitters on the map
-  showSitters() {
-    this.loadMap(this.sitters);
+  initMap(): void {
+    this.map = L.map('map').setView([37.7749, -122.4194], 12); // Set initial view to San Francisco
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(this.map);
+
+    // Load initial markers
+    this.loadMarkers(this.sitters);
   }
 
-  // Show pets needing sitters on the map
-  showPetsInNeed() {
-    this.loadMap(this.petsInNeed);
-  }
-
-  // Load the map with given locations
-  loadMap(locations: any[]) {
-    const mapElement = document.getElementById('map');
-
-  if (mapElement) {
-    const map = new google.maps.Map(mapElement, {
-      center: { lat: 37.7749, lng: -122.4194 }, // Default center
-      zoom: 12
-      
-    });  
-  
-    locations.forEach(location => {
-      const marker = new google.maps.Marker({
-        position: { lat: location.lat, lng: location.lng },
-        map: map,
-        title: location.name
+  loadMarkers(locations: any[]): void {
+    if (this.map) {
+      // Clear existing markers
+      this.map.eachLayer((layer) => {
+        if (layer instanceof L.Marker) {
+          this.map.removeLayer(layer);
+        }
       });
-  
-      marker.addListener('click', () => {
-        this.selectedLocation = location;
+
+      locations.forEach(location => {
+        const marker = L.marker([location.lat, location.lng]).addTo(this.map)
+          .bindPopup(location.name)
+          .on('click', () => {
+            this.selectedLocation = location; // Set selected location on marker click
+          });
       });
-    });
     }
   }
 
-  selectLocation(location: any) {
-    this.selectedLocation = location;
-  }
-
-  // Example function to handle contact action
   contactOwner() {
-    // Logic to contact the owner of the selected location
-    alert(`Contacting ${this.selectedLocation.name}`);
+    if (this.selectedLocation) {
+      alert(`Contacting ${this.selectedLocation.name}`);
+    }
+  }
+
+  close() {
+    this.selectedLocation = false;
   }
 
 }

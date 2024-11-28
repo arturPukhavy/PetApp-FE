@@ -50,6 +50,9 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+.css
+
+Copy
 .profiles-section {
   margin-top: 20px;
 }
@@ -70,28 +73,33 @@
   background-color: white;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  padding: 15px;
-  width: 200px; /* Adjust width as needed */
+  padding: 10px; /* Reduced padding for height */
+  width: 200px; /* Keep the original width */
+  height: auto; /* Adjust height automatically based on content */
   text-align: center;
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  justify-content: space-between; /* Distribute space evenly */
 }
 
 .profile-card img {
-  width: 100%;
-  height: auto;
+  width: 100%; /* Full width of the card */
+  height: auto; /* Maintain aspect ratio */
   border-radius: 5px;
 }
 
 .profile-card h4 {
-  margin: 10px 0;
+  margin: 5px 0; /* Adjusted margin */
 }
 
 .profile-card p {
   color: #555;
+  margin: 5px 0; /* Add some margin for spacing */
 }
 
 .profile-card button {
-  margin-top: 10px;
-  padding: 8px 12px;
+  margin-top: 10px; /* Space above buttons */
+  padding: 8px 12px; /* Padding for buttons */
   background-color: #28a745; /* Green button for contact */
   color: white;
   border: none;
@@ -115,10 +123,11 @@
 
   .profiles-list {
     flex-direction: column;
-    align-items: center;
+    align-items: center; /* Center items on small screens */
   }
 
   .profile-card {
     width: 90%; /* Full width on mobile */
+    height: auto; /* Let height adjust based on content */
   }
 }
