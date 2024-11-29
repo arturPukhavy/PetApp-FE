@@ -1,4 +1,65 @@
-.container {
+$primary-color: #4285F4; // Google Blue
+$background-color: #f9f9f9;
+$text-color: #333;
+$button-hover-color: darken($primary-color, 10%);
+
+.sign-in-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; // Align container to the top
+  height: 100vh; // Full height of the viewport
+  background-color: $background-color;
+  font-family: 'Arial', sans-serif;
+  padding-top: 60px; // Add padding to create space from the top
+
+  .sign-in-card {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     text-align: center;
-    padding: 50px;
+    width: 350px; // Increased width for better layout
+    height: 350px; // Increased height for a taller card
+
+    h1 {
+      margin-bottom: 10px;
+      font-size: 24px;
+      color: $text-color;
+    }
+
+    p {
+      margin-bottom: 40px;
+      color: #666;
+    }
+
+    .google-sign-in {
+      display:inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $primary-color;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+      margin-top: 20px; // Add margin for spacing
+
+      img {
+        width: 20px;
+        margin-right: 10px;
+      }
+
+      &:hover {
+        background-color: $button-hover-color;
+      }
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #888;
+    }
+  }
 }

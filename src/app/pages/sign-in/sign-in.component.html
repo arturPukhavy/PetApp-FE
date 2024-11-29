@@ -1,5 +1,15 @@
-<div class="container">
-  <div class="sign-in">
-    <span>Sign in with Google account</span>
+<div class="sign-in-container">
+  <div class="sign-in-card">
+    <h1>Welcome!</h1>
+    <p>Please sign in to continue.</p>
+    
+    <button class="google-sign-in" (click)="signInWithGoogle()">
+      <img [src]="'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaa2hwiG4o2vVy3yYZKTBDlqkTuQ0n3KEL2w&s'" alt="Google Logo" />
+      Sign in with Google
+    </button>
+
+    <div class="footer">
+      <p>&copy; 2024 PetCare App</p>
+    </div>
   </div>
 </div>

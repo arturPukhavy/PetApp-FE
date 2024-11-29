@@ -6,10 +6,12 @@ import { FormsModule } from '@angular/forms';
 interface Message {
   text: string;
   sent: boolean;
+  timestamp: string; // Add timestamp for messages
 }
 
 interface Chat {
   name: string;
+  avatar: string; // Add avatar for each chat
   messages: Message[];
 }
 
@@ -20,13 +22,13 @@ interface Chat {
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss'],
 })
-export class ChatComponent  implements OnInit {
+export class ChatComponent implements OnInit {
   chats: Chat[] = [
-    { name: 'Alice', messages: [] },
-    { name: 'Bob', messages: [] },
-    { name: 'Charlie', messages: [] }
+    { name: 'Alice', avatar: 'assets/alice.jpg', messages: [] },
+    { name: 'Bob', avatar: 'assets/bob.jpg', messages: [] },
+    { name: 'Charlie', avatar: 'assets/charlie.jpg', messages: [] }
   ];
-  
+
   selectedChat: Chat | null = null;
   newMessage: string = '';
 
@@ -40,14 +42,15 @@ export class ChatComponent  implements OnInit {
 
   sendMessage() {
     if (this.newMessage.trim() && this.selectedChat) {
-      this.selectedChat.messages.push({ text: this.newMessage, sent: true });
+      const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      this.selectedChat.messages.push({ text: this.newMessage, sent: true, timestamp });
       this.newMessage = '';
 
       // Simulate receiving a message
       setTimeout(() => {
-        this.selectedChat?.messages.push({ text: 'This is a response.', sent: false });
+        const responseTimestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        this.selectedChat?.messages.push({ text: 'This is a response.', sent: false, timestamp: responseTimestamp });
       }, 1000);
     }
   }
-
 }

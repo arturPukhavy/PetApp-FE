@@ -2,18 +2,25 @@
   <div class="chat-list">
     <h2>Chats</h2>
     <ul>
-      <li *ngFor="let chat of chats" (click)="selectChat(chat)">
+      <li *ngFor="let chat of chats" (click)="selectChat(chat)" [class.active]="selectedChat === chat">
+        <img [src]="'https://static1.bigstockphoto.com/8/7/5/large1500/5781083.jpg'" alt="{{ chat.name }}'s avatar" class="avatar" />
         {{ chat.name }}
       </li>
     </ul>
   </div>
+
   <div class="chat-window" *ngIf="selectedChat">
     <h2>Chat with {{ selectedChat.name }}</h2>
+
     <div class="messages">
       <div *ngFor="let message of selectedChat.messages" [ngClass]="{'sent': message.sent, 'received': !message.sent}">
-        {{ message.text }}
+        <div class="message-content">
+          <div>{{ message.text }}</div>
+          <small class="timestamp">{{ message.timestamp }}</small> <!-- Position the timestamp here -->
+        </div>
       </div>
     </div>
+
     <div class="input-area">
       <input [(ngModel)]="newMessage" (keydown.enter)="sendMessage()" placeholder="Type a message..." />
       <button (click)="sendMessage()">Send</button>
