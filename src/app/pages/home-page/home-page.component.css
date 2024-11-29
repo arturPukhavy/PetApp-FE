@@ -50,9 +50,6 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.css
-
-Copy
 .profiles-section {
   margin-top: 20px;
 }
@@ -117,8 +114,12 @@ Copy
     flex-direction: column;
   }
 
-  .filter-column, .map-column {
+  .map-column {
     width: 100%; /* Full width on small screens */
+  }
+  .filter-column {
+    width: 100%;
+    height: auto;
   }
 
   .profiles-list {
@@ -127,7 +128,7 @@ Copy
   }
 
   .profile-card {
-    width: 90%; /* Full width on mobile */
+    width: 50%; /* Full width on mobile */
     height: auto; /* Let height adjust based on content */
   }
 }

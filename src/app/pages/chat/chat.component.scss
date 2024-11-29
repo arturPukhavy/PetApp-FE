@@ -1,11 +1,17 @@
 .chat-container {
   display: flex;
+  flex-direction: column; /* Change to column for mobile */
   height: 100vh; /* Full height of viewport */
   font-family: Arial, sans-serif;
+
+  @media (min-width: 768px) {
+    flex-direction: row; /* Switch back to row layout on larger screens */
+  }
 }
 
 .chat-list {
-  width: 300px;
+  width: 100%; /* Full width on mobile */
+  max-width: 300px; /* Max width for larger screens */
   background-color: #f4f4f4;
   border-right: 1px solid #ccc;
   padding: 20px;
@@ -137,4 +143,29 @@
   display: block; /* Make timestamp a block element */
   font-size: 0.75rem; /* Smaller font for timestamp */
   color: #888; /* Lighter color for timestamp */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .chat-list {
+    max-width: 100%; /* Full width on mobile */
+    border-right: none; /* Remove border on mobile */
+    border-bottom: 1px solid #ccc; /* Add bottom border for separation */
+  }
+
+  .chat-window {
+    padding: 10px; /* Less padding for mobile */
+  }
+
+  .messages {
+    padding: 5px; /* Less padding for messages */
+  }
+
+  .input-area {
+    flex-direction: column; /* Stack input and button on mobile */
+    input {
+      margin-right: 0; /* Remove right margin */
+      margin-bottom: 10px; /* Add bottom margin */
+    }
+  }
 }
