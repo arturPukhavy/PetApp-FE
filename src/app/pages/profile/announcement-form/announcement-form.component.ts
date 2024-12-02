@@ -1,23 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @Component({
-  standalone: true,
-  imports: [CommonModule, FormsModule],
-  selector: 'app-announcement-form',
-  templateUrl: './announcement-form.component.html',
-  styleUrls: ['./announcement-form.component.scss'],
+    imports: [CommonModule, FormsModule, RouterModule],
+    standalone: true,
+    selector: 'app-announcement-form',
+    templateUrl: './announcement-form.component.html',
+    styleUrls: ['./announcement-form.component.scss']
 })
 export class AnnouncementFormComponent  implements OnInit {
-
-  sitter = {
-    name: '',
-    description: '',
-    workingHours: '',
-    rate: null,
-    image: 'https://static1.bigstockphoto.com/8/7/5/large1500/5781083.jpg' // Example image
-  };
 
   request = {
     petName: '',
@@ -34,8 +27,8 @@ export class AnnouncementFormComponent  implements OnInit {
 
   submitAnnouncement() {
     // Handle the submission logic here
-    console.log('Sitter Details:', this.sitter);
     console.log('Pet Care Request:', this.request);
+
     
   }
 

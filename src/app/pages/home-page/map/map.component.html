@@ -1,0 +1,19 @@
+<!-- map.component.html -->
+<div class="map-page">
+  <div class="map-container">
+    <div class="toggle-buttons">
+      <button class="btn" (click)="toggleDisplay()">
+        {{ showSitter ? 'Show Pet Owners' : 'Show Sitters' }}
+      </button>
+    </div>
+
+    <div id="map" style="height: 400px; z-index: 5;"></div> <!-- Map container -->
+  </div>
+
+  <div class="info-box" *ngIf="selectedLocation">
+    <h3>{{ selectedLocation.name }}</h3>
+    <p>{{ selectedLocation.description }}</p>
+    <button class="btn1" (click)="contactOwner()">Contact</button> |
+    <button class="btn2" (click)="close()">Close</button>
+  </div>
+</div>

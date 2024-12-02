@@ -1,31 +1,8 @@
 <div class="announcement-page">
-  <h1>Create Sitter or Pet Owner Announcement</h1>
+  <h1>Create Pet Owner Announcement</h1>
 
   <form (submit)="submitAnnouncement()">
-    <div class="sitter-details">
-      <h3>About the Sitter</h3>
-      <label for="sitterName">Name</label>
-      <input type="text" id="sitterName" placeholder="Enter sitter's name" required />
-
-      <label for="sitterLocation">Location</label>
-      <input type="text" id="sitterLocation" placeholder="Enter location" required />
-
-      <label for="sitterDescription">Description</label>
-      <textarea id="sitterDescription" placeholder="Enter description" required></textarea>
-
-      <label for="workingHours">Working Time</label>
-      <input type="text" id="workingHours" placeholder="Enter working time" required />
-
-      <label for="sitterRate">Rate (in Euro)</label>
-      <input type="number" id="sitterRate" placeholder="Enter rate" required />
-    </div>
-
-    <br>
-    <p> ..... or .....</p>
-    <br>
-
     <div class="request-details">
-      <h3>Pet Care Request</h3>
       <label for="petName">Pet Name</label>
       <input type="text" id="petName" placeholder="Enter pet's name" required />
 
@@ -45,13 +22,15 @@
       <label for="petDescription">Description</label>
       <textarea id="petDescription" placeholder="Enter description" required></textarea>
 
-      <label for="bookingDate">Booking Date</label>
+      <label for="bookingDate">Booking Date, from</label>
+      <input type="date" id="bookingDate" required />
+      <label for="bookingDate">Booking Date, to</label>
       <input type="date" id="bookingDate" required />
 
       <label for="payment">Payment (in Euro)</label>
       <input type="number" id="payment" placeholder="Enter payment amount" required />
     </div>
 
-    <button type="submit" class="btn">Submit Announcement</button>
+    <button type="submit" class="btn" routerLink="/profile" routerLinkActive="active">Submit Announcement</button>
   </form>
 </div>

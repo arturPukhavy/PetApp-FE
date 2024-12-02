@@ -17,31 +17,9 @@
     color: #333;
   }
   
-  .search-bar {
+  .nav-tabs {
     display: flex;
     align-items: center;
-    margin-top: 10px;
-    margin-left: 100px;
-  }
-  
-  .search-bar input {
-    padding: 8px;
-    width: 250px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .search-bar button {
-    padding: 8px 12px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    margin-left: 5px;
-    cursor: pointer;
-  }
-  
-  .nav-tabs {
     margin-top: 10px;
   }
   
@@ -55,11 +33,33 @@
   .nav-tabs a:hover {
     color: #007bff;
   }
+
+  .language-selector {
+    margin-left: 15px; /* Space between the last tab and the language selector */
+  }
+  
+  .language-selector select {
+    padding: 5px;
+    font-size: 18px; /* Match font size with nav tabs */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white; /* Match background color */
+    cursor: pointer;
+  }
+  
+  .language-selector select:hover {
+    border-color: #007bff; /* Change border color on hover */
+  }
   
   /* Responsive adjustments */
   @media (max-width: 768px) {
     .header {
       padding: 15px;
+    }
+
+    .language-selector select {
+      font-size: 12px; /* Adjust font size for mobile */
+      margin-top: 3px;
     }
   
     .header-container {
@@ -86,5 +86,6 @@
       margin-left: 0;
       margin-top: 5px;
       font-size: 16px;
+      padding: 2px;
     }
   }

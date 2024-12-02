@@ -1,0 +1,69 @@
+<div class="web-content">
+  <div class="filters-page">
+    <h2>Filters</h2>
+    <form (submit)="applyFilters($event)" *ngIf="!sitterFilter">
+      <div class="form-group">
+        <label for="type">Type</label>
+        <select id="type" >
+          <option value="">Select Type</option>
+          <option value="dog">Dog</option>
+          <option value="cat">Cat</option>
+          <option value="other">Other Animals</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="breed">Breed</label>
+        <input type="text" id="breed" placeholder="Enter breed" />
+      </div>
+      <div class="form-group">
+        <label for="age">Age Range</label>
+        <div class="age-inputs">
+          <input type="number" id="ageMin"  placeholder="Min Age"/>
+          <input type="number" id="ageMax"  placeholder="Max Age"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input type="text" id="price" placeholder="Enter price"/>
+      </div>
+      <div class="form-group">
+        <label for="date">Date, from</label>
+        <input type="date" id="date"/>
+        <label for="date1">to</label>
+        <input type="date" id="date1"/>
+      </div>
+      <div class="form-group">
+        <label for="location">Location</label>
+        <input type="text" id="location" placeholder="Enter location" />
+      </div>
+      <button type="submit" class="btn">Apply Filters</button>
+    </form>
+
+    <form (submit)="applyFilters($event)" *ngIf="sitterFilter">
+      <div class="form-group">
+        <label for="type">Type</label>
+        <select id="type">
+          <option value="">Select Type</option>
+          <option value="dog">Dog</option>
+          <option value="cat">Cat</option>
+          <option value="other">Other Animals</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input type="text" id="price" placeholder="Enter price" />
+      </div>
+      <div class="form-group">
+        <label for="date">Date, from</label>
+        <input type="date" id="date"/>
+        <label for="date1">to</label>
+        <input type="date" id="date1"/>
+      </div>
+      <div class="form-group">
+        <label for="location">Location</label>
+        <input type="text" id="location" placeholder="Enter location" />
+      </div>
+      <button type="submit" class="btn">Apply Filters</button>
+    </form>
+  </div>
+</div>  

@@ -1,37 +1,71 @@
 import { CommonModule, NgFor } from '@angular/common';
 import { Component, NgModule } from '@angular/core';
-import { Ad } from '../../core/models/ad-model';
 import { FormsModule, NgModel } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { ProfileService } from '../../core/services/profile.service';
 
 @Component({
-  selector: 'app-profile',
-  standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
-  templateUrl: './profile.component.html',
-  styleUrl: './profile.component.css'
+    standalone: true,
+    selector: 'app-profile',
+    imports: [CommonModule, FormsModule, RouterModule],
+    templateUrl: './profile.component.html',
+    styleUrl: './profile.component.css'
 })
 export class ProfileComponent {
   isEditing = false;
   username = 'JohnDoe';
   email = 'john.doe@example.com';
+  role: 'sitter' | 'petOwner' = 'petOwner'; // Default role
+  available = false; // Track visibility of the availability message
 
+  // Sample data
   ads = [
     { title: 'Looking for a sitter', status: 'Active' },
-    // Add more ads as needed
   ];
 
   requests = [
     { petName: 'Fido', status: 'Pending' },
-    // Add more requests as needed
   ];
 
   suggestions = [
-    { text: 'Consider adopting more pets!' },
-    // Add more suggestions as needed
+    { text: 'Here is the list of your suggestions' },
   ];
+
+  petInfo = {
+    name: 'Fido',
+    breed: 'Golden Retriever',
+    age: '3 years',
+    caseHistory: 'No medical issues. Friendly with other pets.',
+  };
+
+  sitterInfo = {
+    description: 'Experienced pet sitter with love for animals.',
+    experience: '5 years',
+    workingHours: 'Available from 9 AM to 5 PM',
+    isAvailable: false,
+  };
+
+  constructor(private profileService: ProfileService) {}
+
+  ngOnInit() {
+    // Load availability status from the service
+    this.sitterInfo.isAvailable = this.profileService.getAvailability();
+    this.available = this.sitterInfo.isAvailable;
+  }
 
   onClose() {
     this.isEditing = false;
+  }
+
+  toggleRole() {
+    this.role = this.role === 'sitter' ? 'petOwner' : 'sitter'; // Toggle role
+    this.available = false;
+  }
+
+  toggleAvailability() {
+    this.available = !this.available;
+
+    // Save the availability status in the service
+    this.profileService.setAvailability(this.sitterInfo.isAvailable);
   }
 }

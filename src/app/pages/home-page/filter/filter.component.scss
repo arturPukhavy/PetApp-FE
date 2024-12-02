@@ -1,18 +1,8 @@
-.settings-page {
+.filters-page {
     padding: 30px;
-    background-color: #f4f4f4;
-    border-radius: 8px;
   }
   
-  .settings-section {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
-  }
-  
-  .settings-section h3 {
+  .filters-page h2 {
     color: #333;
   }
   
@@ -22,16 +12,17 @@
   
   .form-group label {
     display: block;
-    margin-bottom: 5px;
     font-weight: bold;
+    margin-bottom: 5px;
   }
   
-  .form-group input,
-  .form-group select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  .form-group .age-inputs {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .form-group .age-inputs input {
+    width: 48%;
   }
   
   .btn {
@@ -49,8 +40,12 @@
   
   /* Responsive adjustments */
   @media (max-width: 768px) {
-    .settings-page {
+    .filters-page {
       padding: 20px;
+    }
+    .web-content {
+      max-height: 200px;
+
     }
   
     .form-group input,
