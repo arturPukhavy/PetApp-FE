@@ -1,13 +1,20 @@
 .filters-page {
-    padding: 30px;
-  }
+  margin-bottom: 20px;
+}
   
   .filters-page h2 {
     color: #333;
   }
   
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Add spacing between form elements */
+  }
+  
   .form-group {
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
   }
   
   .form-group label {
@@ -19,22 +26,23 @@
   .form-group .age-inputs {
     display: flex;
     justify-content: space-between;
+    gap: 10px;
   }
   
   .form-group .age-inputs input {
     width: 48%;
   }
   
-  .btn {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 15px;
+  button.btn {
+    background-color: #007BFF;
+    color: #fff;
     border: none;
-    border-radius: 5px;
+    padding: 10px 15px;
     cursor: pointer;
+    border-radius: 5px;
   }
   
-  .btn:hover {
+  button.btn:hover {
     background-color: #0056b3;
   }
   

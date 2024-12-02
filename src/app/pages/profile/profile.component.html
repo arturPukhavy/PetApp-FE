@@ -56,6 +56,18 @@
     <p><strong>Breed:</strong> {{ petInfo.breed }}</p>
     <p><strong>Age:</strong> {{ petInfo.age }}</p>
     <p><strong>About Pet:</strong> {{ petInfo.caseHistory }}</p>
+    <div class="availability">
+      <label>
+        <input type="checkbox" (click)="toggleShownOwner()" />
+        <strong> Shown in the search</strong>
+      </label>
+      <span class="availability-message" *ngIf="shownOwner">
+        You are shown in the search
+      </span>
+      <span class="non-availability-message" *ngIf="!shownOwner">
+        You are not shown in the search 
+      </span>
+    </div>
   </div>
 
   <div *ngIf="role === 'petOwner'" class="profile-section">
@@ -70,23 +82,28 @@
     <p><strong>Working Hours:</strong> {{ sitterInfo.workingHours }}</p>
     <div class="availability">
       <label>
-        <input type="checkbox" (click)="toggleAvailability()" />
-        <strong>Available</strong>
+        <input type="checkbox" (click)="toggleShownSitter()" />
+        <strong> Shown in the search</strong>
       </label>
-      <span class="availability-message" *ngIf="available">
-        You are now available in search for pet owners
+      <span class="availability-message" *ngIf="available || shownSitter">
+        You are shown in the search
       </span>
-      <span class="non-availability-message" *ngIf="!available">
-        You are currently not available in the search for pet owners
+      <span class="non-availability-message" *ngIf="!available && !shownSitter">
+        You are not shown in the search 
       </span>
     </div>
-  </div>
-
-  <div class="profile-section">
-    <h3>Suggestions</h3>
-    <ul>
-      <li *ngFor="let suggestion of suggestions">{{ suggestion.text }}</li>
-    </ul>
+    <div class="availability">
+      <label>
+        <input type="checkbox" (click)="toggleAvailability()" />
+        <strong> Available</strong>
+      </label>
+      <span class="availability-message" *ngIf="available">
+        You are shown as available in the search for pet owners
+      </span>
+      <span class="non-availability-message" *ngIf="!available">
+        You are not shown as available in the search for pet owners
+      </span>
+    </div>
   </div>
 
   <div class="profile-section">

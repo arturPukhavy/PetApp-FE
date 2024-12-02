@@ -17,6 +17,8 @@ export class ProfileComponent {
   email = 'john.doe@example.com';
   role: 'sitter' | 'petOwner' = 'petOwner'; // Default role
   available = false; // Track visibility of the availability message
+  shownSitter = false;
+  shownOwner = false;
 
   // Sample data
   ads = [
@@ -68,4 +70,13 @@ export class ProfileComponent {
     // Save the availability status in the service
     this.profileService.setAvailability(this.sitterInfo.isAvailable);
   }
+
+  toggleShownSitter() {
+    this.shownSitter = !this.shownSitter;
+  }
+
+  toggleShownOwner() {
+    this.shownOwner = !this.shownOwner;
+  }
 }
+
