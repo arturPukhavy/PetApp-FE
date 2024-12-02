@@ -5,6 +5,7 @@ import { Injectable } from "@angular/core";
   })
   export class ProfileService {
     private isAvailable: boolean = false;
+    private adData: any = {};
   
     setAvailability(value: boolean) {
       this.isAvailable = value;
@@ -12,5 +13,13 @@ import { Injectable } from "@angular/core";
   
     getAvailability(): boolean {
       return this.isAvailable;
+    }
+
+    setAdData(data: any) {
+      this.adData = data;
+    }
+  
+    getAdData() {
+      return this.adData;
     }
   }

@@ -2,10 +2,10 @@
   <h2>User Profile</h2>
 
   <div class="toggle-buttons">
-    <button class="role-button" [class.active]="role === 'sitter'" [disabled]="role === 'sitter'" (click)="toggleRole()">
+    <button class="role-button" [class.active]="role === 'sitter'" (click)="toggleRole('sitter')">
       Sitter
     </button>
-    <button class="role-button" [class.active]="role === 'petOwner'" [disabled]="role === 'petOwner'" (click)="toggleRole()">
+    <button class="role-button" [class.active]="role === 'petOwner'" (click)="toggleRole('petOwner')">
       Pet Owner
     </button>
   </div>
@@ -19,7 +19,7 @@
       <p><strong>Username:</strong> {{ username }}</p>
       <p><strong>Email:</strong> {{ email }}</p>
       <p><strong>Role:</strong> {{ role === 'sitter' ? 'Sitter' : 'Pet Owner' }}</p>
-      <p><strong>Location:</strong> Barysau</p>
+      <p><strong>Location:</strong> {{location}}</p>
     </div>
     <button class="btn" (click)="isEditing = !isEditing">
       {{ isEditing ? 'Cancel' : 'Edit Profile' }}
@@ -28,24 +28,24 @@
 
   <div *ngIf="isEditing" class="profile-section">
     <h3>Edit Profile</h3>
-    <form>
+    <form (ngSubmit)="onClose()">
       <div class="form-group">
         <label for="edit-username">Username</label>
-        <input type="text" id="edit-username" [(ngModel)]="username"/>
+        <input type="text" id="edit-username" [(ngModel)]="username" name="username" />
       </div>
       <div class="form-group">
         <label for="edit-email">Email</label>
-        <input type="email" id="edit-email" [(ngModel)]="email"/>
+        <input type="email" id="edit-email" [(ngModel)]="email" name="email" />
       </div>
       <div class="form-group">
         <label for="role">Type of pet</label>
-        <select id="role">
+        <select id="role" [(ngModel)]="petInfo.type" name="petType">
           <option value="sitter">Dog</option>
           <option value="petOwner">Cat</option>
           <option value="other">Other</option>
         </select>
       </div>
-      <button type="submit" class="btn" (click)="onClose()">Save Changes</button>
+      <button type="submit" class="btn">Save Changes</button>
     </form>
   </div>
 
@@ -58,7 +58,7 @@
     <p><strong>About Pet:</strong> {{ petInfo.caseHistory }}</p>
     <div class="availability">
       <label>
-        <input type="checkbox" (click)="toggleShownOwner()" />
+        <input type="checkbox" (change)="updateAvailabilityMessage('owner')" />
         <strong> Shown in the search</strong>
       </label>
       <span class="availability-message" *ngIf="shownOwner">
@@ -72,7 +72,7 @@
 
   <div *ngIf="role === 'petOwner'" class="profile-section">
     <h3>Foster Care Announcements</h3>
-    <button class="btn" routerLink="/form" routerLinkActive="active">Create Announcement</button>
+    <button class="btn" (click)="createAd()">Create Announcement</button>
   </div>
 
   <div *ngIf="role === 'sitter'" class="profile-section">
@@ -82,19 +82,19 @@
     <p><strong>Working Hours:</strong> {{ sitterInfo.workingHours }}</p>
     <div class="availability">
       <label>
-        <input type="checkbox" (click)="toggleShownSitter()" />
+        <input type="checkbox" (change)="updateAvailabilityMessage('sitter')" />
         <strong> Shown in the search</strong>
       </label>
-      <span class="availability-message" *ngIf="available || shownSitter">
+      <span class="availability-message" *ngIf="shownSitter || available">
         You are shown in the search
       </span>
-      <span class="non-availability-message" *ngIf="!available && !shownSitter">
+      <span class="non-availability-message" *ngIf="!shownSitter && !available">
         You are not shown in the search 
       </span>
     </div>
     <div class="availability">
       <label>
-        <input type="checkbox" (click)="toggleAvailability()" />
+        <input type="checkbox"  (change)="updateAvailabilityMessage('availability')" />
         <strong> Available</strong>
       </label>
       <span class="availability-message" *ngIf="available">

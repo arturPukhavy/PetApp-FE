@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { ProfileService } from '../../../core/services/profile.service';
 
 @Component({
     imports: [CommonModule, FormsModule, RouterModule],
@@ -11,25 +12,17 @@ import { RouterModule } from '@angular/router';
     styleUrls: ['./announcement-form.component.scss']
 })
 export class AnnouncementFormComponent  implements OnInit {
+  adData: any;
 
-  request = {
-    petName: '',
-    ownerName: '',
-    petType: 'dog', // Default selection
-    bookingDate: '',
-    payment: null,
-    image: 'https://avatars.mds.yandex.net/i?id=e2523a6042990badcc0de02187d39d70a762470a-9107157-images-thumbs&n=13' // Example image
-  };
+  constructor(private profileService: ProfileService) {}
 
-  announcementSubmitted = false;
+  ngOnInit() {
+    this.adData = this.profileService.getAdData();
+  }
 
-  ngOnInit() {}
-
-  submitAnnouncement() {
+  submitAd() {
     // Handle the submission logic here
-    console.log('Pet Care Request:', this.request);
-
-    
+    console.log('Ad submitted:', this.adData);
   }
 
 }
