@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ProfileService } from '../../../core/services/profile.service';
 
@@ -12,6 +12,7 @@ import { ProfileService } from '../../../core/services/profile.service';
     styleUrls: ['./announcement-form.component.scss']
 })
 export class AnnouncementFormComponent  implements OnInit {
+  @ViewChild('adForm') adForm: NgForm;
   adData: any;
 
   constructor(private profileService: ProfileService) {}
@@ -21,8 +22,16 @@ export class AnnouncementFormComponent  implements OnInit {
   }
 
   submitAd() {
-    // Handle the submission logic here
-    console.log('Ad submitted:', this.adData);
+    const ownerData = {
+      ownerName: this.adData.ownerName,
+      description: this.adData.petDescription,
+      name: this.adData.petName,
+      photoUrl: this.adData.petPhoto,
+      available: !this.adData.available,
+    };
+
+    this.profileService.updateOwner(ownerData);
+    console.log(ownerData);
   }
 
 }

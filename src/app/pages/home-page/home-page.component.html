@@ -20,7 +20,7 @@
       </div>
 
       <div class="profiles-section">
-        <h3 *ngIf="showSitter">Available Sitters</h3>
+        <h3 *ngIf="showSitter">Sitters</h3>
         <div *ngIf="showSitter" class="profiles-list">
           <div
             class="profile-card"
@@ -30,7 +30,7 @@
             <img [src]="'https://static1.bigstockphoto.com/8/7/5/large1500/5781083.jpg'" alt="{{ sitter.name }}'s Photo" />
             <h4>{{ sitter.name }}</h4>
             <p>{{ sitter.description }}</p>
-            <p><strong>Rate:</strong> {{ sitter.rate | currency }}</p>
+            <!-- <p><strong>Rate:</strong> {{ sitter.rate | currency }}</p> -->
             <button class="btn btn-primary" routerLink="/sitter" routerLinkActive="active">View Details</button>
             <button class="btn btn-contact" (click)="openModal(sitter.name)">Contact</button>
           </div>

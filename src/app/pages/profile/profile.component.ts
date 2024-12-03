@@ -13,7 +13,8 @@ import { ProfileService } from '../../core/services/profile.service';
 })
 export class ProfileComponent {
   isEditing = false;
-  username = 'JohnDoe';
+  profilePhoto: string = 'https://static1.bigstockphoto.com/8/7/5/large1500/5781083.jpg';
+  username = 'John';
   location = 'Barysau';
   email = 'john.doe@example.com';
   role: 'sitter' | 'petOwner' = 'petOwner'; // Default role
@@ -22,6 +23,7 @@ export class ProfileComponent {
   shownOwner = false;
 
   petInfo = {
+    photo: 'https://avatars.mds.yandex.net/i?id=e2523a6042990badcc0de02187d39d70a762470a-9107157-images-thumbs&n=13',
     name: 'Fido',
     type: 'dog',
     breed: 'Golden Retriever',
@@ -43,8 +45,31 @@ export class ProfileComponent {
     this.available = this.profileService.getAvailability();
   }
 
-  onClose() {
+  onPhotoUpload(event: any): void {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.profilePhoto = e.target.result; // Update profile photo
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  onPetPhotoUpload(event: any): void {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.petInfo.photo = e.target.result; // Update profile photo
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  onSave(): void {
     this.isEditing = false;
+    alert('Profile updated successfully!');
   }
 
   toggleRole(newRole: 'sitter' | 'petOwner') {
@@ -64,15 +89,44 @@ export class ProfileComponent {
 
   updateAvailabilityMessage(type: 'owner' | 'sitter' | 'availability') {
     if (type === 'owner') {
-      // Update shownOwner state based on checkbox
       this.shownOwner = !this.shownOwner;
-    } else if (type === 'sitter') {
-      // Update shownSitter state based on checkbox
+  
+      const ownerData = {
+        ownerName: this.username,
+        description: this.petInfo.caseHistory,
+        name: this.petInfo.name,
+        photoUrl: this.petInfo.photo,
+        available: this.available,
+      };
+  
+      this.profileService.updateOwner(ownerData);
+    }
+    if (type === 'sitter') {
       this.shownSitter = !this.shownSitter;
+  
+      const sitterData = {
+        name: this.username,
+        description: this.sitterInfo.description,
+        rate: 20, // Example rate
+        photoUrl: this.profilePhoto,
+        available: this.available,
+      };
+  
+      // Update the sitter's details
+      this.profileService.updateSitter(sitterData);
     } else if (type === 'availability') {
-      // Update availability state based on checkbox
       this.available = !this.available;
-      this.profileService.setAvailability(this.available);
+  
+      // Update the sitter's availability
+      const sitterData = {
+        name: this.username,
+        description: this.sitterInfo.description,
+        rate: 20,
+        photoUrl: this.profilePhoto,
+        available: this.available,
+      };
+  
+      this.profileService.updateSitter(sitterData);
     }
   }
 
@@ -82,6 +136,8 @@ export class ProfileComponent {
       petName: this.petInfo.name,
       petType: this.petInfo.type,
       petDescription: this.petInfo.caseHistory,
+      petPhoto: this.petInfo.photo,
+      available: this.available,
       location: this.location, // Replace with actual location if available
     };
     
