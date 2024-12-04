@@ -1,18 +1,22 @@
 <div class="announcement-page">
+  
   <div class="request-details">
-    <h3>Pet Care Request</h3>
-    <h2>Guchi</h2>
-    <img [src]="'https://avatars.mds.yandex.net/i?id=e2523a6042990badcc0de02187d39d70a762470a-9107157-images-thumbs&n=13'" alt="name" class="sitter-image" />
-    <p><strong>Owner:</strong> Anna</p>
-    <p><strong>Pet Type:</strong> dog</p>
-    <p><strong>Description:</strong> description </p>
-    <p><strong>Location:</strong> Vilna </p>
-    <p><strong>Booking Date:</strong> 12-13.02.2026 </p>
-    <p><strong>Payment:</strong> 3 euro</p>
-    <p><strong>Case history</strong> good </p>
+    <h3>About the Pet Owner</h3>
+    <h2>{{ ownerData.petName }}</h2>
+    <img [src]="ownerData.petPhoto" alt="{{ ownerData.petName }}" class="pet-image" />
+    
+    <div class="details">
+      <p><strong>Owner:</strong> {{ ownerData.name }}</p>
+      <p><strong>Pet Type:</strong> {{ ownerData.petType }}</p>
+      <p><strong>Description:</strong> {{ ownerData.petDescription }}</p>
+      <p><strong>Location:</strong> {{ ownerData.location }}</p>
+      <p><strong>Booking Date:</strong> {{ ownerData.booking }}</p>
+      <p><strong>Payment:</strong> 3 Euro</p>
+      <p><strong>Case History:</strong> Good</p>
+    </div>
   </div>
 
-  <button class="btn" (click)="confirmBooking()">Contact</button>
+  <button class="btn contact-btn" *ngIf="showContactButton" (click)="confirmBooking()">Contact</button>
 
   <app-modal *ngIf="bookingConfirmed" (close)="bookingConfirmed = false"></app-modal>
 

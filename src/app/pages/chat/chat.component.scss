@@ -1,40 +1,55 @@
 .chat-container {
   display: flex;
-  flex-direction: column; /* Change to column for mobile */
-  height: 100vh; /* Full height of viewport */
-  font-family: Arial, sans-serif;
-
+  height: 100vh;
+  font-family: sans-serif; /* Use a more modern font stack */
+  @media (max-width: 767px) {
+    flex-direction: column;
+  }
   @media (min-width: 768px) {
-    flex-direction: row; /* Switch back to row layout on larger screens */
+    flex-direction: row;
   }
 }
 
+
 .chat-list {
-  width: 100%; /* Full width on mobile */
-  max-width: 300px; /* Max width for larger screens */
-  background-color: #f4f4f4;
-  border-right: 1px solid #ccc;
-  padding: 20px;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 300px;
+  background: #f0f0f0;
+  border-right: 1px solid #ddd;
+  overflow-y: auto; /* Added for scrollability */
+  @media (max-width: 767px) {
+    max-width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+  }
 
   h2 {
-    margin-bottom: 20px;
-    font-size: 1.5rem;
+    margin: 20px;
+    font-size: 1.2rem;
   }
 
   ul {
     list-style: none;
     padding: 0;
+    margin: 0;
 
     li {
-      display: flex;
-      align-items: center;
-      padding: 10px;
+      padding: 10px 20px;
+      border-bottom: 1px solid #ddd;
       cursor: pointer;
-      transition: background-color 0.2s;
-
+      transition: background 0.2s;
+      &:hover {
+        background: #e0e0e0;
+      }
       &.active {
-        background-color: #e0e0e0;
+        background: #c0c0c0;
+      }
+
+      .chat-link { /* Style the link */
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        align-items: center;
       }
 
       img.avatar {
@@ -47,125 +62,80 @@
   }
 }
 
+
 .chat-window {
-  flex-grow: 1;
-  padding: 20px;
+  flex: 1;
   display: flex;
   flex-direction: column;
-  background-color: #fff;
+  background: #fff;
+  padding: 20px;
 
   h2 {
-    margin-bottom: 20px;
-    font-size: 1.5rem;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
   }
 
   .messages {
-    flex-grow: 1;
+    flex: 1;
     overflow-y: auto;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
     padding: 10px;
+    border: 1px solid #ddd;
     border-radius: 5px;
 
-    div {
-      margin: 5px 0;
-      padding: 10px;
-      border-radius: 5px;
-      display: flex;
-      align-items: flex-start;
+    .message-content {
+      display: inline-block; /* Ensures message takes only necessary width */
+      max-width: 70%;
+      padding: 8px 12px;
+      border-radius: 15px;
+      margin-bottom: 5px;
+      word-break: break-word; /* Added to handle long words */
 
-      &.sent {
-        background-color: #d1e7dd;
-        justify-content: flex-end;
-        text-align: right;
-
-        .message-content {
-          max-width: 70%;
-          text-align: right;
-
-          .timestamp {
-            font-size: 0.75rem;
-            color: #555;
-          }
-        }
+      .timestamp {
+        display: block;
+        font-size: 0.8rem;
+        color: #888;
+        margin-top: 2px;
       }
+    }
 
-      &.received {
-        background-color: #f8d7da;
+    .sent {
+      background-color: #e9f5ea;
+      text-align: right;
+      margin-left: auto; /* Align sent messages to the right */
+    }
 
-        .message-content {
-          max-width: 70%;
-          text-align: left;
-
-          .timestamp {
-            font-size: 0.75rem;
-            color: #555;
-          }
-        }
-      }
+    .received {
+      background-color: #f5e9ea;
     }
   }
 
   .input-area {
     display: flex;
+    margin-top: 10px;
 
     input {
-      flex-grow: 1;
+      flex: 1;
       padding: 10px;
-      border: 1px solid #ccc;
+      border: 1px solid #ddd;
       border-radius: 5px;
-      margin-right: 10px;
-      transition: border-color 0.3s;
-
+      margin-right: 5px;
       &:focus {
-        border-color: #007bff;
         outline: none;
+        border-color: #007bff;
       }
     }
 
     button {
       padding: 10px;
-      background-color: #007bff;
+      background: #007bff;
       color: white;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      transition: background-color 0.3s;
-
+      transition: background 0.2s;
       &:hover {
-        background-color: #0056b3;
+        background: #0056b3;
       }
-    }
-  }
-}
-
-.timestamp {
-  display: block; /* Make timestamp a block element */
-  font-size: 0.75rem; /* Smaller font for timestamp */
-  color: #888; /* Lighter color for timestamp */
-}
-
-/* Media Queries for Responsiveness */
-@media (max-width: 768px) {
-  .chat-list {
-    max-width: 100%; /* Full width on mobile */
-    border-right: none; /* Remove border on mobile */
-    border-bottom: 1px solid #ccc; /* Add bottom border for separation */
-  }
-
-  .chat-window {
-    padding: 10px; /* Less padding for mobile */
-  }
-
-  .messages {
-    padding: 5px; /* Less padding for messages */
-  }
-
-  .input-area {
-    flex-direction: column; /* Stack input and button on mobile */
-    input {
-      margin-right: 0; /* Remove right margin */
-      margin-bottom: 10px; /* Add bottom margin */
     }
   }
 }

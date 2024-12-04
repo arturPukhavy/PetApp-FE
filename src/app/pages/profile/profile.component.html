@@ -23,7 +23,7 @@
       <p><strong>Role:</strong> {{ role === 'sitter' ? 'Sitter' : 'Pet Owner' }}</p>
       <p><strong>Location:</strong> {{ location }}</p>
     </div>
-    <button class="btn" (click)="isEditing = !isEditing">
+    <button class="btn" (click)="toggleEdit()">
       {{ isEditing ? 'Cancel' : 'Edit Profile' }}
     </button>
   </div>
@@ -31,7 +31,7 @@
   <!-- Edit Profile Section -->
   <div *ngIf="isEditing" class="profile-section">
     <h3>Edit Profile</h3>
-    <form (ngSubmit)="onSave()">
+    <form #editForm="ngForm" (ngSubmit)="onSave()">
       <!-- Profile Photo Upload Section -->
       <div class="form-group">
         <label for="edit-photo">Profile Photo</label>
@@ -116,7 +116,7 @@
     <p><strong>About Pet:</strong> {{ petInfo.caseHistory }}</p>
     <div class="availability">
       <label>
-        <input type="checkbox" (change)="updateAvailabilityMessage('owner')"/>
+        <input type="checkbox" [checked]="shownOwner" (change)="updateAvailabilityMessage('owner')"/>
         <strong> Shown in the search</strong>
       </label>
       <span class="availability-message" *ngIf="shownOwner">
@@ -140,7 +140,7 @@
     <p><strong>Working Hours:</strong> {{ sitterInfo.workingHours }}</p>
     <div class="availability">
       <label>
-        <input type="checkbox" (change)="updateAvailabilityMessage('sitter')" />
+        <input type="checkbox" [checked]="shownSitter || available" (change)="updateAvailabilityMessage('sitter')" />
         <strong> Shown in the search</strong>
       </label>
       <span class="availability-message" *ngIf="shownSitter || available">

@@ -16,19 +16,19 @@ import { ProfileService } from '../../core/services/profile.service';
 export class HomePageComponent implements OnInit{
   sitters = [
     { name: 'Alice', description: 'Loving and experienced sitter.', rate: 20, photoUrl: 'path/to/alice.jpg', available: true },
-    { name: 'Bob', description: 'Available for weekend stays.', rate: 25, photoUrl: 'path/to/bob.jpg', available: false },
+    { name: 'Ev', description: 'Available for weekend stays.', rate: 25, photoUrl: 'path/to/bob.jpg', available: false },
     { name: 'Bob', description: 'Available for weekend stays.', rate: 25, photoUrl: 'path/to/bob.jpg', available: true },
-    { name: 'Bob', description: 'Available for weekend stays.', rate: 25, photoUrl: 'path/to/bob.jpg', available: false },
-    { name: 'Bob', description: 'Available for weekend stays.', rate: 25, photoUrl: 'path/to/bob.jpg', available: true },
+    { name: 'Asd', description: 'Available for weekend stays.', rate: 25, photoUrl: 'path/to/bob.jpg', available: false },
+    { name: 'Mark', description: 'Available for weekend stays.', rate: 25, photoUrl: 'path/to/bob.jpg', available: true },
     // Add more sitters as needed
   ];
 
   petsInNeed = [
     { name: 'Rex', description: 'A friendly golden retriever.', ownerName: 'John', photoUrl: 'path/to/rex.jpg', available: false },
     { name: 'Mittens', description: 'Loves to play and cuddle!', ownerName: 'Sarah', photoUrl: 'path/to/mittens.jpg', available: true },
-    { name: 'Mittens', description: 'Loves to play and cuddle!', ownerName: 'Sarah', photoUrl: 'path/to/mittens.jpg', available: false },
-    { name: 'Mittens', description: 'Loves to play and cuddle!', ownerName: 'Sarah', photoUrl: 'path/to/mittens.jpg', available: true },
-    { name: 'Mittens', description: 'Loves to play and cuddle!', ownerName: 'Sarah', photoUrl: 'path/to/mittens.jpg', available: false },
+    { name: 'Mitten', description: 'Loves to play and cuddle!', ownerName: 'Sarah', photoUrl: 'path/to/mittens.jpg', available: false },
+    { name: 'Mit', description: 'Loves to play and cuddle!', ownerName: 'Sarah', photoUrl: 'path/to/mittens.jpg', available: true },
+    { name: 'Mitt', description: 'Loves to play and cuddle!', ownerName: 'Sarah', photoUrl: 'path/to/mittens.jpg', available: false },
     // Add more pets as needed
   ];
 
@@ -75,10 +75,15 @@ export class HomePageComponent implements OnInit{
 
   showAll() {
     this.isShowedAll = true;
+
     if (this.showSitter) {
-      this.filteredSitters = [...this.sitters, ...this.availableSitters];
+      this.filteredSitters = Array.from(
+        new Set([...this.sitters, ...this.availableSitters]) // Deduplicate sitters
+      );
     } else {
-      this.filteredPets = [...this.petsInNeed, ...this.availableOwners];
+      this.filteredPets = Array.from(
+        new Set([...this.petsInNeed, ...this.availableOwners]) // Deduplicate pets
+      );
     }
   }
   

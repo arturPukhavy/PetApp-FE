@@ -1,6 +1,6 @@
 import { CommonModule, NgFor } from '@angular/common';
-import { Component, NgModule } from '@angular/core';
-import { FormsModule, NgModel } from '@angular/forms';
+import { Component, NgModule, ViewChild } from '@angular/core';
+import { FormsModule, NgForm, NgModel } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { ProfileService } from '../../core/services/profile.service';
 
@@ -12,6 +12,7 @@ import { ProfileService } from '../../core/services/profile.service';
     styleUrl: './profile.component.css'
 })
 export class ProfileComponent {
+  @ViewChild('editForm') editForm: NgForm; 
   isEditing = false;
   profilePhoto: string = 'https://static1.bigstockphoto.com/8/7/5/large1500/5781083.jpg';
   username = 'John';
@@ -43,6 +44,27 @@ export class ProfileComponent {
     this.shownOwner = false; // Reset for petOwner
     this.shownSitter = false; // Reset for sitter
     this.available = this.profileService.getAvailability();
+
+    const announcementData = {
+      description: this.sitterInfo.description,
+      exp: this.sitterInfo.experience,
+      work: this.sitterInfo.workingHours,
+      photo: this.profilePhoto,
+      name: this.username,
+      rate: '20 euro',
+      petName: this.petInfo.name,
+      petType: this.petInfo.type,
+      petDescription: this.petInfo.caseHistory,
+      petPhoto: this.petInfo.photo,
+      available: true,
+      location: this.location, // Replace with actual location if available
+    };
+    
+    this.profileService.setAdData(announcementData);
+
+    this.profileService.isChecked$.subscribe((checked) => {
+      this.shownOwner = checked;
+    });
   }
 
   onPhotoUpload(event: any): void {
@@ -65,6 +87,11 @@ export class ProfileComponent {
       };
       reader.readAsDataURL(file);
     }
+  }
+
+  toggleEdit() {
+    this.isEditing = !this.isEditing;
+   
   }
 
   onSave(): void {
@@ -131,17 +158,6 @@ export class ProfileComponent {
   }
 
   createAd() {
-    const announcementData = {
-      ownerName: this.username,
-      petName: this.petInfo.name,
-      petType: this.petInfo.type,
-      petDescription: this.petInfo.caseHistory,
-      petPhoto: this.petInfo.photo,
-      available: this.available,
-      location: this.location, // Replace with actual location if available
-    };
-    
-    this.profileService.setAdData(announcementData);
     this.router.navigate(['/form']); 
   }
 }
