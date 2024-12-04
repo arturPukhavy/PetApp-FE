@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { ProfileService } from '../../../core/services/profile.service';
 
 @Component({
     imports: [CommonModule, FormsModule, RouterModule],
@@ -11,25 +12,32 @@ import { RouterModule } from '@angular/router';
     styleUrls: ['./announcement-form.component.scss']
 })
 export class AnnouncementFormComponent  implements OnInit {
+  @ViewChild('adForm') adForm: NgForm;
+  adData: any;
+  isAdSubmitted: boolean = false;
+  booking: string;
 
-  request = {
-    petName: '',
-    ownerName: '',
-    petType: 'dog', // Default selection
-    bookingDate: '',
-    payment: null,
-    image: 'https://avatars.mds.yandex.net/i?id=e2523a6042990badcc0de02187d39d70a762470a-9107157-images-thumbs&n=13' // Example image
-  };
+  constructor(private profileService: ProfileService) {}
 
-  announcementSubmitted = false;
+  ngOnInit() {
+    this.adData = this.profileService.getAdData();
+  }
 
-  ngOnInit() {}
+  submitAd() {
+    const ownerData = {
+      ownerName: this.adData.name,
+      description: this.adData.petDescription,
+      name: this.adData.petName,
+      photoUrl: this.adData.petPhoto,
+      available: true,
+      // booking: this.booking
+    };
 
-  submitAnnouncement() {
-    // Handle the submission logic here
-    console.log('Pet Care Request:', this.request);
+    this.profileService.updateOwner(ownerData);
+    this.profileService.setAdData(ownerData);
+    console.log(ownerData);
 
-    
+    this.profileService.setChecked(true);
   }
 
 }

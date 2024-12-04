@@ -1,29 +1,34 @@
 <div class="announcement-page">
   <h1>Create Pet Owner Announcement</h1>
 
-  <form (submit)="submitAnnouncement()">
+  <form #adForm="ngForm">
     <div class="request-details">
+      <div class="profile-photo">
+        <img [src]="adData.petPhoto" alt="Profile Photo" />
+      </div>
+
       <label for="petName">Pet Name</label>
-      <input type="text" id="petName" placeholder="Enter pet's name" required />
+      <input type="text" id="petName" [(ngModel)]="adData.petName" name="petName" placeholder="Enter pet's name" required />
 
       <label for="petOwner">Owner's Name</label>
-      <input type="text" id="petOwner"  placeholder="Enter owner's name" required />
+      <input type="text" id="petOwner" [(ngModel)]="adData.name" name="ownerName" placeholder="Enter owner's name" required />
 
       <label for="petLocation">Location</label>
-      <input type="text" id="petLocation" placeholder="Enter location" required />
+      <input type="text" id="petLocation" [(ngModel)]="adData.location" name="location" placeholder="Enter location" required />
 
       <label for="petType">Pet Type</label>
-      <select id="petType">
+      <select id="petType" [(ngModel)]="adData.petType" name="petType">
         <option value="dog">Dog</option>
         <option value="cat">Cat</option>
         <option value="other">Other</option>
       </select>
 
       <label for="petDescription">Description</label>
-      <textarea id="petDescription" placeholder="Enter description" required></textarea>
+      <textarea id="petDescription" [(ngModel)]="adData.petDescription" name="petDescription" placeholder="Enter description" required></textarea>
 
       <label for="bookingDate">Booking Date, from</label>
       <input type="date" id="bookingDate" required />
+
       <label for="bookingDate">Booking Date, to</label>
       <input type="date" id="bookingDate" required />
 
@@ -31,6 +36,12 @@
       <input type="number" id="payment" placeholder="Enter payment amount" required />
     </div>
 
-    <button type="submit" class="btn" routerLink="/profile" routerLinkActive="active">Submit Announcement</button>
+    <button 
+      type="button" 
+      class="btn" 
+      routerLink="/profile" 
+      routerLinkActive="active"
+      (click)="submitAd()"
+      >Submit Ad</button>
   </form>
 </div>

@@ -20,30 +20,16 @@
   margin-top: 20px;
 }
 
-.welcome-title {
-  text-align: center; /* Center the title */
-  font-size: 32px;
-  color: #333;
-  margin: 20px 0; /* Add margin for spacing */
-}
-
-.welcome-subtitle {
-  text-align: center; /* Center the subtitle */
-  font-size: 18px;
-  color: #555;
-  margin-bottom: 40px; /* Add margin for spacing below the subtitle */
-}
-
 .filter-column {
-  width: 25%; /* Adjust width as necessary */
+  width: 25%;
   padding: 20px;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.map-column {
-  width: 70%; /* Adjust width as necessary */
+.list-column {
+  width: 70%;
   padding: 20px;
   background-color: #fff;
   border-radius: 8px;
@@ -59,6 +45,7 @@
   margin-bottom: 20px;
 }
 
+/* Profile Card Styles */
 .profiles-list {
   display: flex;
   justify-content: center;
@@ -67,68 +54,108 @@
 }
 
 .profile-card {
-  background-color: white;
-  border-radius: 5px;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  padding: 10px; /* Reduced padding for height */
-  width: 200px; /* Keep the original width */
-  height: auto; /* Adjust height automatically based on content */
+  padding: 15px;
+  width: 200px;
+  height: auto;
   text-align: center;
   display: flex;
-  flex-direction: column; /* Stack elements vertically */
-  justify-content: space-between; /* Distribute space evenly */
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .profile-card img {
-  width: 100%; /* Full width of the card */
-  height: auto; /* Maintain aspect ratio */
+  width: 100%;
+  height: auto;
   border-radius: 5px;
 }
 
 .profile-card h4 {
-  margin: 5px 0; /* Adjusted margin */
+  margin: 10px 0;
 }
 
 .profile-card p {
   color: #555;
-  margin: 5px 0; /* Add some margin for spacing */
+  margin: 5px 0;
 }
 
 .profile-card button {
-  margin-top: 10px; /* Space above buttons */
-  padding: 8px 12px; /* Padding for buttons */
-  background-color: #28a745; /* Green button for contact */
-  color: white;
+  margin-top: 10px;
+  padding: 8px 12px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
-.profile-card button:hover {
-  background-color: #218838; /* Darker green on hover */
+.profile-card.unavailable-card {
+  background-color: #ffffff;
 }
 
-/* Responsive adjustments */
+/* Button Styles */
+.toggle-buttons,
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-main {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-tertiary {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-primary {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.btn-contact {
+  background-color: #ffc107;
+  color: white;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+/* Responsive Adjustments */
 @media (max-width: 768px) {
   .content-container {
     flex-direction: column;
   }
 
-  .map-column {
-    width: 100%; /* Full width on small screens */
-  }
-  .filter-column {
+  .filter-column,
+  .list-column {
     width: 100%;
-    height: auto;
   }
 
   .profiles-list {
     flex-direction: column;
-    align-items: center; /* Center items on small screens */
+    align-items: center;
   }
 
   .profile-card {
-    width: 50%; /* Full width on mobile */
-    height: auto; /* Let height adjust based on content */
+    width: 90%;
   }
 }

@@ -37,6 +37,7 @@
         <input type="text" id="location" placeholder="Enter location" />
       </div>
       <button type="submit" class="btn">Apply Filters</button>
+      <button type="button" (click)="clearFilters()" class="btn">Clear Filters</button>
     </form>
 
     <form (submit)="applyFilters($event)" *ngIf="sitterFilter">
@@ -64,6 +65,7 @@
         <input type="text" id="location" placeholder="Enter location" />
       </div>
       <button type="submit" class="btn">Apply Filters</button>
+      <button type="button" (click)="clearFilters()" class="btn">Clear Filters</button>
     </form>
   </div>
 </div>  

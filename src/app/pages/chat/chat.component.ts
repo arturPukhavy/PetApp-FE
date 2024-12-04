@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
 
 
 interface Message {
@@ -17,7 +18,7 @@ interface Chat {
 
 @Component({
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   selector: 'app-chat',
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss'],
@@ -32,12 +33,16 @@ export class ChatComponent implements OnInit {
   selectedChat: Chat | null = null;
   newMessage: string = '';
 
-  constructor() { }
+  constructor( private router: Router) { }
 
   ngOnInit() {}
 
   selectChat(chat: Chat) {
     this.selectedChat = chat;
+  }
+
+  goToUserInfo() {
+    this.router.navigate(['/sitter'], { queryParams: { fromChat: true } });
   }
 
   sendMessage() {

@@ -6,10 +6,17 @@ import { BehaviorSubject } from "rxjs";
   })
   export class HomeService {
     private showSitterSubject = new BehaviorSubject<boolean>(true); // Default to showing sitters
-  
-    showSitter$ = this.showSitterSubject.asObservable();
-  
-    toggleDisplay() {
-      this.showSitterSubject.next(!this.showSitterSubject.value);
-    }
+    private filterDataSubject = new BehaviorSubject<{ type: string; filters: any }>({ type: 'sitters', filters: {} });
+
+  showSitter$ = this.showSitterSubject.asObservable();
+  filterData$ = this.filterDataSubject.asObservable();
+
+  toggleDisplay() {
+    this.showSitterSubject.next(!this.showSitterSubject.value);
+  }
+
+  updateFilters(type: string, filters: any) {
+    this.filterDataSubject.next({ type, filters });
+  }
+
   }
