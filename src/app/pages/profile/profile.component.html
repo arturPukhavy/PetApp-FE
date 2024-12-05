@@ -32,33 +32,47 @@
   <div *ngIf="isEditing" class="profile-section">
     <h3>Edit Profile</h3>
     <form #editForm="ngForm" (ngSubmit)="onSave()">
-      <!-- Profile Photo Upload Section -->
       <div class="form-group">
         <label for="edit-photo">Profile Photo</label>
         <input type="file" id="edit-photo" (change)="onPhotoUpload($event)" />
       </div>
       <div class="form-group">
         <label for="edit-username">Username</label>
-        <input type="text" id="edit-username" [(ngModel)]="username" name="username" />
+        <input
+          type="text"
+          id="edit-username"
+          [(ngModel)]="tempProfile.username"
+          name="username"
+        />
       </div>
       <div class="form-group">
         <label for="edit-email">Email</label>
-        <input type="email" id="edit-email" [(ngModel)]="email" name="email" />
+        <input
+          type="email"
+          id="edit-email"
+          [(ngModel)]="tempProfile.email"
+          name="email"
+        />
       </div>
       <div class="form-group">
         <label for="edit-location">Location</label>
-        <input type="text" id="edit-location" [(ngModel)]="location" name="location" />
+        <input
+          type="text"
+          id="edit-location"
+          [(ngModel)]="tempProfile.location"
+          name="location"
+        />
       </div>
-
+  
       <!-- Conditional Fields for Pet Owner -->
-      <div class="petOwner" *ngIf="role === 'petOwner'">
+      <div class="petOwner" *ngIf="tempProfile.role === 'petOwner'">
         <div class="form-group">
           <label for="edit-petPhoto">Pet Photo</label>
           <input type="file" id="edit-petPhoto" (change)="onPetPhotoUpload($event)" />
         </div>
         <div class="form-group">
           <label for="role">Type of pet</label>
-          <select id="role" [(ngModel)]="petInfo.type" name="petType">
+          <select id="role" [(ngModel)]="tempProfile.petInfo.type" name="petType">
             <option value="dog">Dog</option>
             <option value="cat">Cat</option>
             <option value="other">Other</option>
@@ -66,38 +80,73 @@
         </div>
         <div class="form-group">
           <label for="edit-name">Name</label>
-          <input type="text" id="edit-name" [(ngModel)]="petInfo.name" name="name" />
+          <input
+            type="text"
+            id="edit-name"
+            [(ngModel)]="tempProfile.petInfo.name"
+            name="name"
+          />
         </div>
         <div class="form-group">
           <label for="edit-breed">Breed</label>
-          <input type="text" id="edit-breed" [(ngModel)]="petInfo.breed" name="breed" />
+          <input
+            type="text"
+            id="edit-breed"
+            [(ngModel)]="tempProfile.petInfo.breed"
+            name="breed"
+          />
         </div>
         <div class="form-group">
           <label for="edit-age">Age</label>
-          <input type="text" id="edit-age" [(ngModel)]="petInfo.age" name="age" />
+          <input
+            type="text"
+            id="edit-age"
+            [(ngModel)]="tempProfile.petInfo.age"
+            name="age"
+          />
         </div>
         <div class="form-group">
           <label for="edit-caseHistory">About Pet</label>
-          <input type="text" id="edit-caseHistory" [(ngModel)]="petInfo.caseHistory" name="caseHistory" />
+          <input
+            type="text"
+            id="edit-caseHistory"
+            [(ngModel)]="tempProfile.petInfo.caseHistory"
+            name="caseHistory"
+          />
         </div>
       </div>
-
+  
       <!-- Conditional Fields for Sitter -->
-      <div class="sitter" *ngIf="role === 'sitter'">
+      <div class="sitter" *ngIf="tempProfile.role === 'sitter'">
         <div class="form-group">
           <label for="edit-description">Description</label>
-          <input type="text" id="edit-description" [(ngModel)]="sitterInfo.description" name="description" />
+          <input
+            type="text"
+            id="edit-description"
+            [(ngModel)]="tempProfile.sitterInfo.description"
+            name="description"
+          />
         </div>
         <div class="form-group">
           <label for="edit-experience">Experience</label>
-          <input type="text" id="edit-experience" [(ngModel)]="sitterInfo.experience" name="experience" />
+          <input
+            type="text"
+            id="edit-experience"
+            [(ngModel)]="tempProfile.sitterInfo.experience"
+            name="experience"
+          />
         </div>
         <div class="form-group">
           <label for="edit-workingHours">Working Hours</label>
-          <input type="text" id="edit-workingHours" [(ngModel)]="sitterInfo.workingHours" name="workingHours" />
+          <input
+            type="text"
+            id="edit-workingHours"
+            [(ngModel)]="tempProfile.sitterInfo.workingHours"
+            name="workingHours"
+          />
         </div>
       </div>
-
+  
       <button type="submit" class="btn">Save Changes</button>
     </form>
   </div>
@@ -119,6 +168,7 @@
         <input type="checkbox" [checked]="shownOwner" (change)="updateAvailabilityMessage('owner')"/>
         <strong> Shown in the search</strong>
       </label>
+      <br>
       <span class="availability-message" *ngIf="shownOwner">
         You are shown in the search
       </span>
@@ -143,6 +193,7 @@
         <input type="checkbox" [checked]="shownSitter || available" (change)="updateAvailabilityMessage('sitter')" />
         <strong> Shown in the search</strong>
       </label>
+      <br>
       <span class="availability-message" *ngIf="shownSitter || available">
         You are shown in the search
       </span>
@@ -150,11 +201,13 @@
         You are not shown in the search 
       </span>
     </div>
+    <br>
     <div class="availability">
       <label>
         <input type="checkbox"  (change)="updateAvailabilityMessage('availability')" />
         <strong> Available</strong>
       </label>
+      <br>
       <span class="availability-message" *ngIf="available">
         You are shown as available in the search for pet owners
       </span>

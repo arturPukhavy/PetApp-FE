@@ -1,5 +1,6 @@
 .announcement-page {
     padding: 30px;
+    background-color: white;
   }
   
   .request-details {
@@ -10,7 +11,7 @@
   }
   
   
-  h1 {
+  h1, textarea, label, input, select, option {
     color: #333;
   }
   

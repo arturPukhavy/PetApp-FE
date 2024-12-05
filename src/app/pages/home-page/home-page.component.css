@@ -1,6 +1,8 @@
 .home-page {
-  text-align: center;
   padding: 20px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  text-align: center;
   background-color: #f4f4f4;
 }
 
@@ -54,6 +56,8 @@
 }
 
 .profile-card {
+  background-color: var(--card-background);
+  color: var(--text-color);
   background-color: #f8d7da;
   border: 1px solid #f5c6cb;
   border-radius: 8px;
@@ -108,6 +112,7 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .btn-main {
@@ -136,7 +141,7 @@
 }
 
 .btn:hover {
-  opacity: 0.9;
+  opacity: 0.8;
 }
 
 /* Responsive Adjustments */

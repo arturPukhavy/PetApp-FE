@@ -1,12 +1,12 @@
 .header {
-    background-color: #f8f9fa;
+    background-color:   #f8d7da;
     padding: 20px;
     border-bottom: 2px solid #eaeaea;
-  }
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
   
   .header-container {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
   }
@@ -15,6 +15,7 @@
     margin: 0;
     font-size: 24px;
     color: #333;
+    color: var(--primary-color);
   }
   
   .nav-tabs {
@@ -28,6 +29,8 @@
     text-decoration: none;
     font-size: 18px;
     color: #333;
+    color: var(--text-color);
+    transition: color 0.3s ease;
   }
   
   .nav-tabs a:hover {
@@ -37,6 +40,9 @@
   .language-selector {
     margin-left: 15px; /* Space between the last tab and the language selector */
   }
+  .language-selector option {
+    color: #000000; /* Space between the last tab and the language selector */
+  }
   
   .language-selector select {
     padding: 5px;
@@ -44,6 +50,8 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: white; /* Match background color */
+    background-color: var(--card-background);
+    color: var(--text-color);
     cursor: pointer;
   }
   
