@@ -168,6 +168,7 @@
         <input type="checkbox" [checked]="shownOwner" (change)="updateAvailabilityMessage('owner')"/>
         <strong> Shown in the search</strong>
       </label>
+      <br>
       <span class="availability-message" *ngIf="shownOwner">
         You are shown in the search
       </span>
@@ -192,6 +193,7 @@
         <input type="checkbox" [checked]="shownSitter || available" (change)="updateAvailabilityMessage('sitter')" />
         <strong> Shown in the search</strong>
       </label>
+      <br>
       <span class="availability-message" *ngIf="shownSitter || available">
         You are shown in the search
       </span>
@@ -199,11 +201,13 @@
         You are not shown in the search 
       </span>
     </div>
+    <br>
     <div class="availability">
       <label>
         <input type="checkbox"  (change)="updateAvailabilityMessage('availability')" />
         <strong> Available</strong>
       </label>
+      <br>
       <span class="availability-message" *ngIf="available">
         You are shown as available in the search for pet owners
       </span>

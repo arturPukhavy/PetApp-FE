@@ -2,20 +2,42 @@
   <div class="chat-list">
     <h2>Chats</h2>
     <ul>
-      <li *ngFor="let chat of chats" (click)="selectChat(chat)" [class.active]="selectedChat === chat">
+      <li
+        *ngFor="let chat of chats"
+        (click)="selectChat(chat)"
+        [class.active]="selectedChat === chat"
+      >
         <a class="chat-link">
-          <img [src]="'https://static1.bigstockphoto.com/8/7/5/large1500/5781083.jpg'" alt="{{ chat.name }}'s avatar" class="avatar" />
-          {{ chat.name }}
+          <img
+            [src]="'https://static1.bigstockphoto.com/8/7/5/large1500/5781083.jpg'"
+            alt="{{ chat.name }}'s avatar"
+            class="avatar"
+          />
+          <span>{{ chat.name }}</span>
         </a>
       </li>
     </ul>
   </div>
 
   <div class="chat-window" *ngIf="selectedChat">
-    <h2>Chat with <strong style="cursor: pointer;" (click)="goToUserInfo()" class="chat-link">{{ selectedChat.name }}</strong></h2>
+    <header class="chat-header">
+      <h2>
+        Chat with
+        <strong
+          style="cursor: pointer"
+          (click)="goToUserInfo()"
+          class="chat-link"
+        >
+          {{ selectedChat.name }}
+        </strong>
+      </h2>
+    </header>
 
     <div class="messages" #messageContainer>
-      <div *ngFor="let message of selectedChat.messages" [ngClass]="{'sent': message.sent, 'received': !message.sent}">
+      <div
+        *ngFor="let message of selectedChat.messages"
+        [ngClass]="{ sent: message.sent, received: !message.sent }"
+      >
         <div class="message-content">
           <div>{{ message.text }}</div>
           <small class="timestamp">{{ message.timestamp }}</small>
@@ -24,7 +46,11 @@
     </div>
 
     <div class="input-area">
-      <input [(ngModel)]="newMessage" (keydown.enter)="sendMessage()" placeholder="Type a message..." />
+      <input
+        [(ngModel)]="newMessage"
+        (keydown.enter)="sendMessage()"
+        placeholder="Type a message..."
+      />
       <button (click)="sendMessage()">Send</button>
     </div>
   </div>
