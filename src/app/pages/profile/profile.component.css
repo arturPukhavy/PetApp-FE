@@ -44,6 +44,10 @@
   color: white;
 }
 
+p, strong, label, input, select, option {
+  color: #333;
+}
+
 .profile-header {
   display: flex;
   align-items: center;
