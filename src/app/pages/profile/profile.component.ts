@@ -38,6 +38,8 @@ export class ProfileComponent {
     workingHours: 'Available from 9 AM to 5 PM',
   };
 
+  tempProfile: any = {};
+
   constructor(private profileService: ProfileService, private router: Router) {}
 
   ngOnInit() {
@@ -90,13 +92,40 @@ export class ProfileComponent {
   }
 
   toggleEdit() {
+    if (this.isEditing) {
+      // Reset tempProfile if canceling
+      this.tempProfile = { ...this.getCurrentProfileData() };
+    } else {
+      // Initialize tempProfile with current data
+      this.tempProfile = { ...this.getCurrentProfileData() };
+    }
     this.isEditing = !this.isEditing;
-   
   }
 
   onSave(): void {
+    // Save changes from tempProfile to actual profile data
+    this.profilePhoto = this.tempProfile.profilePhoto;
+    this.username = this.tempProfile.username;
+    this.email = this.tempProfile.email;
+    this.location = this.tempProfile.location;
+    this.role = this.tempProfile.role;
+    this.petInfo = { ...this.tempProfile.petInfo };
+    this.sitterInfo = { ...this.tempProfile.sitterInfo };
+
     this.isEditing = false;
     alert('Profile updated successfully!');
+  }
+
+  getCurrentProfileData() {
+    return {
+      profilePhoto: this.profilePhoto,
+      username: this.username,
+      email: this.email,
+      location: this.location,
+      role: this.role,
+      petInfo: { ...this.petInfo },
+      sitterInfo: { ...this.sitterInfo },
+    };
   }
 
   toggleRole(newRole: 'sitter' | 'petOwner') {

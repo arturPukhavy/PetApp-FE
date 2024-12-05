@@ -20,7 +20,7 @@ export class AnnouncementFormComponent  implements OnInit {
   constructor(private profileService: ProfileService) {}
 
   ngOnInit() {
-    this.adData = this.profileService.getAdData();
+    this.adData = this.profileService.getAdData(); // Ensure this returns a valid object
   }
 
   submitAd() {
@@ -30,14 +30,18 @@ export class AnnouncementFormComponent  implements OnInit {
       name: this.adData.petName,
       photoUrl: this.adData.petPhoto,
       available: true,
-      // booking: this.booking
+      booking: {
+        from: this.adData.bookingDateFrom,
+        to: this.adData.bookingDateTo
+      },
+      payment: this.adData.payment
     };
 
-    this.profileService.updateOwner(ownerData);
-    this.profileService.setAdData(ownerData);
+    this.profileService.updateOwner(ownerData); // Update owner data
+    this.profileService.setAdData(ownerData);   // Set the ad data
     console.log(ownerData);
 
     this.profileService.setChecked(true);
-  }
+}
 
 }

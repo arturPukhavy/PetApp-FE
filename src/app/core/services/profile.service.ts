@@ -35,7 +35,19 @@ import { BehaviorSubject } from "rxjs";
       // Add more sitters as needed
     ];
 
+    private adDataSubject = new BehaviorSubject<any>({
+      petPhoto: '',
+      petName: '',
+      name: '',
+      location: '',
+      petType: '',
+      petDescription: '',
+      bookingDateFrom: '',
+      bookingDateTo: '',
+      payment: 0,
+    });
 
+    adData$ = this.adDataSubject.asObservable();
 
   // BehaviorSubjects to track sitters and available sitters
   private sittersSubject = new BehaviorSubject(this.sitters);
@@ -118,10 +130,12 @@ import { BehaviorSubject } from "rxjs";
 
     setAdData(data: any) {
       this.adData = data;
+      this.adDataSubject.next(data);
+      
     }
   
     getAdData() {
-      return this.adData;
+      return this.adDataSubject.value;
     }
 
     setChecked(checked: boolean) {

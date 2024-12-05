@@ -26,14 +26,14 @@
       <label for="petDescription">Description</label>
       <textarea id="petDescription" [(ngModel)]="adData.petDescription" name="petDescription" placeholder="Enter description" required></textarea>
 
-      <label for="bookingDate">Booking Date, from</label>
-      <input type="date" id="bookingDate" required />
+      <label for="bookingDateFrom">Booking Date, from</label>
+      <input type="date" id="bookingDateFrom" [(ngModel)]="adData.bookingDateFrom" name="bookingDateFrom" required />
 
-      <label for="bookingDate">Booking Date, to</label>
-      <input type="date" id="bookingDate" required />
+      <label for="bookingDateTo">Booking Date, to</label>
+      <input type="date" id="bookingDateTo" [(ngModel)]="adData.bookingDateTo" name="bookingDateTo" required />
 
       <label for="payment">Payment (in Euro)</label>
-      <input type="number" id="payment" placeholder="Enter payment amount" required />
+      <input type="number" id="payment" [(ngModel)]="adData.payment" name="payment" placeholder="Enter payment amount" required />
     </div>
 
     <button 

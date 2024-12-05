@@ -15,13 +15,29 @@ import { ActivatedRoute } from '@angular/router';
 export class PetOwnerComponent  implements OnInit {
   bookingConfirmed = false;
   pet: Pet;
-  ownerData: any;
   showContactButton: boolean = true;
+  ownerData: any = {
+    petName: '',
+    petPhoto: '',
+    name: '',
+    petType: '',
+    petDescription: '',
+    location: '',
+    booking: {
+      from: '',
+      to: ''
+    },
+    payment: 0
+  };
 
   constructor(private profileService: ProfileService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.ownerData = this.profileService.getAdData();
+    this.profileService.adData$.subscribe((data) => {
+      if (data) {
+        this.ownerData = data;
+      }
+    });
 
     this.route.queryParams.subscribe(params => {
       this.showContactButton = !params['fromChat'];
