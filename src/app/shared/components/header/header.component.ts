@@ -8,7 +8,7 @@ import { IonicModule, Platform } from '@ionic/angular';
     selector: 'app-header',
     imports: [IonicModule, CommonModule, RouterModule],
     templateUrl: './header.component.html',
-    styleUrl: './header.component.css'
+    styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
   isNative: boolean;

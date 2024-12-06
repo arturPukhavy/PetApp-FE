@@ -10,15 +10,15 @@
         <a routerLink="/chat" routerLinkActive="active">Chat</a>
         <a routerLink="/profile" routerLinkActive="active">Profile</a>
         <a routerLink="/sign-in" routerLinkActive="active">Sign in</a>
-        <div class="language-selector">
-          <select id="language" (change)="changeLanguage($event)">
-            <option value="en">ENG</option>
-            <option value="be">BLR</option>
-            <option value="uk">UKR</option>
-            <option value="pl">POL</option>
-          </select>
-        </div>
       </nav>
+      <div class="language-selector">
+        <select id="language" (change)="changeLanguage($event)">
+          <option value="en">ENG</option>
+          <option value="be">BLR</option>
+          <option value="uk">UKR</option>
+          <option value="pl">POL</option>
+        </select>
+      </div>
     </div>
   </header>
 </ng-container>

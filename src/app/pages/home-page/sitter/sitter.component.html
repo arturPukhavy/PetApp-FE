@@ -1,8 +1,8 @@
-<div class="announcement-page">
+<div class="sitter-page">
   
   <div class="sitter-details">
-    <h1>About the Sitter</h1>
-    <h2>{{ sitterData.name }}</h2>
+    <h3>About the Sitter</h3>
+    <h2><strong>{{ sitterData.name }}</strong></h2>
     <img [src]="sitterData.photo" alt="{{ sitterData.name }}" class="sitter-image" />
     
     <div class="details">
@@ -13,9 +13,8 @@
       <p><strong>Experience:</strong> {{ sitterData.exp }} years</p>
       <p><strong>Case History:</strong> Good</p>
     </div>
+    <button class="btn contact-btn" *ngIf="showContactButton" (click)="confirmBooking()">Contact</button>
   </div>
-
-  <button class="btn contact-btn" *ngIf="showContactButton" (click)="confirmBooking()">Contact</button>
 
   <app-modal *ngIf="bookingConfirmed" (close)="bookingConfirmed = false"></app-modal>
 

@@ -1,6 +1,8 @@
 <div class="home-page">
-  <h2 class="welcome-title">Welcome to PetCare</h2>
-  <p class="welcome-subtitle">Find foster care for your pets, or become a foster parent for pets in need.</p>
+  <h1 class="welcome-title">Welcome to <span>PetCare</span></h1>
+  <p class="welcome-subtitle">
+    Find foster care for your pets, or become a foster parent for pets in need.
+  </p>
 
   <div class="content-container">
     <div class="filter-column">
@@ -13,9 +15,9 @@
           {{ showSitter ? 'Show Pet Owners' : 'Show Sitters' }}
         </button>
       </div>
-
+      <br>
       <div class="filter-buttons">
-        <button class="btn btn-secondary" (click)="showAll()">All</button>
+        <button class="btn btn-secondary" (click)="showAll()">All</button> |
         <button class="btn btn-tertiary" (click)="showAvailable()">Available</button>
       </div>
 
@@ -27,12 +29,26 @@
             *ngFor="let sitter of filteredSitters"
             [ngClass]="{ 'unavailable-card': !sitter.available }"
           >
-            <img [src]="'https://static1.bigstockphoto.com/8/7/5/large1500/5781083.jpg'" alt="{{ sitter.name }}'s Photo" />
+            <img
+              [src]="'https://static1.bigstockphoto.com/8/7/5/large1500/5781083.jpg'"
+              alt="{{ sitter.name }}'s Photo"
+            />
             <h4>{{ sitter.name }}</h4>
             <p>{{ sitter.description }}</p>
-            <!-- <p><strong>Rate:</strong> {{ sitter.rate | currency }}</p> -->
-            <button class="btn btn-primary" routerLink="/sitter" routerLinkActive="active">View Details</button>
-            <button class="btn btn-contact" (click)="openModal(sitter.name)">Contact</button>
+            <button
+              class="btn btn-primary"
+              routerLink="/sitter"
+              routerLinkActive="active"
+            >
+              View Details
+            </button>
+            <br> <br>
+            <button
+              class="btn btn-contact"
+              (click)="openModal(sitter.name)"
+            >
+              Contact
+            </button>
           </div>
         </div>
 
@@ -43,12 +59,27 @@
             *ngFor="let pet of filteredPets"
             [ngClass]="{ 'unavailable-card': !pet.available }"
           >
-            <img [src]="'https://avatars.mds.yandex.net/i?id=e2523a6042990badcc0de02187d39d70a762470a-9107157-images-thumbs&n=13'" alt="{{ pet.name }}'s Photo" />
+            <img
+              [src]="'https://avatars.mds.yandex.net/i?id=e2523a6042990badcc0de02187d39d70a762470a-9107157-images-thumbs&n=13'"
+              alt="{{ pet.name }}'s Photo"
+            />
             <h4>{{ pet.name }}</h4>
             <p>{{ pet.description }}</p>
             <p><strong>Owner:</strong> {{ pet.ownerName }}</p>
-            <button class="btn btn-primary" routerLink="/petowner" routerLinkActive="active">View Details</button>
-            <button class="btn btn-contact" (click)="openModal(pet.ownerName)">Contact</button>
+            <button
+              class="btn btn-primary"
+              routerLink="/petowner"
+              routerLinkActive="active"
+            >
+              View Details
+            </button>
+            <br> <br>
+            <button
+              class="btn btn-contact"
+              (click)="openModal(pet.ownerName)"
+            >
+              Contact
+            </button>
           </div>
         </div>
       </div>
