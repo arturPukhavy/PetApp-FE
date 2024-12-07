@@ -1,8 +1,8 @@
 <!-- Web Header -->
-<ng-container *ngIf="!isNative">
+<ng-container >
   <header class="header">
     <div class="header-container">
-      <div class="logo">
+      <div class="logo" *ngIf="!isNative">
         <h1>PetCare App</h1>
       </div>
       <nav class="nav-tabs">
@@ -10,21 +10,22 @@
         <a routerLink="/chat" routerLinkActive="active">Chat</a>
         <a routerLink="/profile" routerLinkActive="active">Profile</a>
         <a routerLink="/sign-in" routerLinkActive="active">Sign in</a>
+        <div class="language-selector">
+          <select id="language" (change)="changeLanguage($event)">
+            <option value="en">ENG</option>
+            <option value="be">BLR</option>
+            <option value="uk">UKR</option>
+            <option value="pl">POL</option>
+          </select>
+        </div>
       </nav>
-      <div class="language-selector">
-        <select id="language" (change)="changeLanguage($event)">
-          <option value="en">ENG</option>
-          <option value="be">BLR</option>
-          <option value="uk">UKR</option>
-          <option value="pl">POL</option>
-        </select>
-      </div>
+      
     </div>
   </header>
 </ng-container>
 
 <!-- Mobile Header (Ionic) -->
-<ng-container *ngIf="isNative">
+<!-- <ng-container *ngIf="isNative">
   <ion-header>
     <ion-toolbar>
       <ion-title>PetCare App</ion-title>
@@ -48,4 +49,4 @@
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
-</ng-container>
+</ng-container> -->

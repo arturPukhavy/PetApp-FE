@@ -1,8 +1,9 @@
 .header {
-  background-color:  #f8d7da;
+  background-color: #f8d7da;
   padding: 15px 20px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   border-bottom: 2px solid #f8d7da;
+  border-top: 2px solid #f8d7da;
 
   .header-container {
     display: flex;
@@ -19,6 +20,7 @@
     .nav-tabs {
       display: flex;
       gap: 20px;
+      align-items: center;
 
       a {
         text-decoration: none;
@@ -39,8 +41,9 @@
     }
 
     .language-selector {
+      align-items: center;
       select {
-        padding: 5px 10px;
+        padding: 5px 5px;
         font-size: 14px;
         border: 1px solid #ddd;
         border-radius: 5px;
@@ -60,24 +63,27 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .header-container {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the start */
 
-    .nav-tabs {
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 10px;
-
-      a {
-        font-size: 14px;
-      }
+    .logo h1 {
+      margin-bottom: 10px; /* Space below the logo */
     }
 
-    .language-selector {
-      margin-top: 10px;
+    /* New container for nav-tabs and language-selector */
+    .nav-lang-container {
+      display: flex; /* Use flexbox for alignment */
+      width: 100%; /* Full width */
+      justify-content: space-between; /* Space between nav and language selector */
+      align-items: center; /* Center align vertically */
 
-      select {
-        width: 100%;
+      .nav-tabs {
+        display: flex; /* Ensure tabs are in a row */
+        gap: 50px; /* Space between tabs */
+      }
+
+      .language-selector {
+        margin-left: 10px; /* Space between tabs and selector */
       }
     }
   }

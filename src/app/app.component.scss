@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: white;
+  }
+
+  .mobile-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full viewport height for correct positioning */
+  
+    .content {
+      flex: 1; /* Take up remaining space above the header */
+      overflow-y: auto; /* Allow scrolling of content */
+      padding-bottom: 60px; /* Adjust based on the height of the header */
+    }
+  
+    app-header {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+  }
+
