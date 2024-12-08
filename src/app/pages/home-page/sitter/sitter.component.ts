@@ -15,7 +15,7 @@ import { ActivatedRoute } from '@angular/router';
 export class SitterComponent  implements OnInit {
   bookingConfirmed = false;
   pet: Pet;
-  sitterData: any;
+  sitterData: any = [];
   showContactButton: boolean = true;
 
   constructor(private profileService: ProfileService, private route: ActivatedRoute) { }

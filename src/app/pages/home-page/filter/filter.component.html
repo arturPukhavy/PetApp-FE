@@ -1,6 +1,6 @@
 <div class="web-content">
-  <div class="filters-page">
-    <h2>Filters</h2>
+  <div class="filters-page" [class.collapsed]="isCollapsed">
+    <h2 (click)="toggleFilters()">Filters</h2>
     <form (submit)="applyFilters($event)" *ngIf="!sitterFilter">
       <div class="form-group">
         <label for="type">Type</label>
@@ -36,8 +36,10 @@
         <label for="location">Location</label>
         <input type="text" id="location" placeholder="Enter location" />
       </div>
-      <button type="submit" class="btn">Apply Filters</button>
-      <button type="button" (click)="clearFilters()" class="btn">Clear Filters</button>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Apply Filters</button>
+        <button type="button" (click)="clearFilters()" class="btn btn-secondary">Clear Filters</button>
+      </div>
     </form>
 
     <form (submit)="applyFilters($event)" *ngIf="sitterFilter">
@@ -64,8 +66,10 @@
         <label for="location">Location</label>
         <input type="text" id="location" placeholder="Enter location" />
       </div>
-      <button type="submit" class="btn">Apply Filters</button>
-      <button type="button" (click)="clearFilters()" class="btn">Clear Filters</button>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Apply Filters</button>
+        <button type="button" (click)="clearFilters()" class="btn btn-secondary">Clear Filters</button>
+      </div>
     </form>
   </div>
 </div>  

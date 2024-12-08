@@ -1,8 +1,8 @@
 <!-- Web Header -->
-<ng-container *ngIf="!isNative">
+<ng-container >
   <header class="header">
     <div class="header-container">
-      <div class="logo">
+      <div class="logo" *ngIf="!isNative">
         <h1>PetCare App</h1>
       </div>
       <nav class="nav-tabs">
@@ -19,12 +19,13 @@
           </select>
         </div>
       </nav>
+      
     </div>
   </header>
 </ng-container>
 
 <!-- Mobile Header (Ionic) -->
-<ng-container *ngIf="isNative">
+<!-- <ng-container *ngIf="isNative">
   <ion-header>
     <ion-toolbar>
       <ion-title>PetCare App</ion-title>
@@ -48,4 +49,4 @@
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
-</ng-container>
+</ng-container> -->

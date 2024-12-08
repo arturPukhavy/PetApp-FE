@@ -1,7 +1,7 @@
-<div class="announcement-page">
+<div class="owner-page">
   <div class="request-details">
     <h3>About the Pet Owner</h3>
-    <h2>{{ ownerData?.petName }}</h2>
+    <h2><strong>{{ ownerData?.petName }}</strong></h2>
     <img [src]="ownerData?.petPhoto" alt="{{ ownerData?.petName }}" class="pet-image" />
 
     <div class="details">
@@ -13,9 +13,8 @@
       <p><strong>Payment:</strong> {{ ownerData?.payment }} Euro</p>
       <p><strong>Case History:</strong> Good</p>
     </div>
+    <button class="btn contact-btn" *ngIf="showContactButton" (click)="confirmBooking()">Contact</button>
   </div>
-
-  <button class="btn contact-btn" *ngIf="showContactButton" (click)="confirmBooking()">Contact</button>
 
   <app-modal *ngIf="bookingConfirmed" (close)="bookingConfirmed = false"></app-modal>
 </div>

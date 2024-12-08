@@ -1,0 +1,90 @@
+.header {
+  background-color: #f8d7da;
+  padding: 15px 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid #f8d7da;
+  border-top: 2px solid #f8d7da;
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .logo h1 {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      margin: 0;
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+
+      a {
+        text-decoration: none;
+        font-size: 16px;
+        color: #555;
+        font-weight: 500;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: #007bff;
+        }
+
+        &.active {
+          color: #007bff;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .language-selector {
+      align-items: center;
+      select {
+        padding: 5px 5px;
+        font-size: 14px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #fff;
+        color: #555;
+        transition: border-color 0.3s ease;
+
+        &:hover,
+        &:focus {
+          border-color: #007bff;
+        }
+      }
+    }
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the start */
+
+    .logo h1 {
+      margin-bottom: 10px; /* Space below the logo */
+    }
+
+    /* New container for nav-tabs and language-selector */
+    .nav-lang-container {
+      display: flex; /* Use flexbox for alignment */
+      width: 100%; /* Full width */
+      justify-content: space-between; /* Space between nav and language selector */
+      align-items: center; /* Center align vertically */
+
+      .nav-tabs {
+        display: flex; /* Ensure tabs are in a row */
+        gap: 50px; /* Space between tabs */
+      }
+
+      .language-selector {
+        margin-left: 10px; /* Space between tabs and selector */
+      }
+    }
+  }
+}

@@ -8,6 +8,17 @@
 
 <!-- Mobile layout (Native Android) -->
 <ng-container *ngIf="isNative">
+  <div class="mobile-layout">
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+    <app-header></app-header>
+  </div>
+</ng-container>
+
+
+
+<!-- <ng-container *ngIf="isNative">
   <ion-header>
     <ion-toolbar>
       <ion-buttons slot="start">
@@ -50,4 +61,4 @@
       </ion-tab-bar>
     </ion-tabs>
   </ion-content>
-</ng-container>
+</ng-container> -->

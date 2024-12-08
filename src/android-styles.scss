@@ -18,13 +18,13 @@ ion-header {
   }
 }
 
-/* General Layout */
+// /* General Layout */
 ion-content {
   --padding-bottom: 80px; /* Add space for tabs and footer */
   background-color: #f8f9fa;
 }
 
-/* Footer */
+// /* Footer */
 ion-footer {
   --background: #007bff;
   --color: #ffffff;
@@ -34,7 +34,7 @@ ion-footer {
   z-index: 10; /* Ensure footer stays on top */
 }
 
-/* Tabs */
+// /* Tabs */
 ion-tabs {
   position: fixed;
   bottom: 0;
@@ -50,7 +50,7 @@ ion-tab-bar {
   border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Form Controls */
+// /* Form Controls */
 .form-group input,
 .form-group select {
   width: 100%;
@@ -61,7 +61,7 @@ ion-tab-bar {
   margin-bottom: 16px;
 }
 
-/* Buttons */
+// /* Buttons */
 button {
   background-color: #007bff;
   color: white;
