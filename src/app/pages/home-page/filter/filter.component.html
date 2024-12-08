@@ -1,13 +1,13 @@
 <div class="web-content">
-  <div class="filters-page" [class.collapsed]="isCollapsed">
-    <h2 (click)="toggleFilters()">Filters</h2>
+  <div class="filters-page" [class.collapsed]="isCollapsed" >
+    <h2 (click)="toggleFilters()">Filters ⇅</h2>
     <form (submit)="applyFilters($event)" *ngIf="!sitterFilter">
       <div class="form-group">
         <label for="type">Type</label>
         <select id="type" >
           <option value="">Select Type</option>
           <option value="dog">Dog</option>
-          <option value="cat">Cat</option>
+          <option value="cat">Cat</option>s
           <option value="other">Other Animals</option>
         </select>
       </div>

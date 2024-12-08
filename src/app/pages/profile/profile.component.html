@@ -153,7 +153,48 @@
 
 
   <div *ngIf="role === 'petOwner'" class="profile-section">
-    <h3>About Your Pet</h3>
+    <h3>About Your Pet | <button class="btn" (click)="toggleAddPet()">Add Pet</button></h3>
+
+    <!-- Add Pet Form -->
+    <div class="form-group" *ngIf="isAddingPet">
+      <form #petForm="ngForm">
+        <!-- <label >Pet Photo</label>
+        <input type="file" name="photo" ngModel (change)="onPetPhotoUpload($event)" /> -->
+
+        <label>Name:</label>
+        <input type="text" name="name" ngModel required>
+        
+        <label>Type of pet</label>
+          <select ngModel name="type">
+            <option value="dog">Dog</option>
+            <option value="cat">Cat</option>
+            <option value="other">Other</option>
+          </select>
+        
+        <label>Breed:</label>
+        <input type="text" name="breed" ngModel required>
+        
+        <label>Age:</label>
+        <input type="text" name="age" ngModel required>
+        
+        <label>Case History:</label>
+        <input type="text" name="caseHistory" ngModel required>
+        
+        <button class="btn" (click)="onAddPet(petForm)">Save Pet</button>
+      </form>
+    </div>
+    
+    <div *ngFor="let pet of pets">
+      <div class="profile-photo">
+        <img [src]="'https://avatars.mds.yandex.net/i?id=e2523a6042990badcc0de02187d39d70a762470a-9107157-images-thumbs&n=13'" alt="{{ pet.name }}" />
+      </div>
+      <p><strong>Name:</strong> {{ pet.name }}</p>
+      <p><strong>Type of Pet:</strong> {{ pet.type }}</p>
+      <p><strong>Breed:</strong> {{ pet.breed }}</p>
+      <p><strong>Age:</strong> {{ pet.age }}</p>
+      <p><strong>About Pet:</strong> {{ pet.caseHistory }}</p>
+    </div>
+    
     <div class="profile-photo">
       <!-- Two-way binding for profile photo -->
       <img [src]="petInfo.photo" alt="Profile Photo" />

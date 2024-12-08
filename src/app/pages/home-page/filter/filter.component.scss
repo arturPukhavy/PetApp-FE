@@ -23,9 +23,20 @@
     font-size: 24px;
     font-weight: bold;
     text-align: center;
-    color: #333;
+    color: #3c3a3a;
     margin-bottom: 20px;
     cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+
+    &:hover {
+      color: #222222;
+      transform: scale(1.02); // Slightly scale up on hover
+    }
+
+    &:active {
+      transform: scale(0.98); // Slightly scale down on click
+    }
+    
   }
 
   form {
