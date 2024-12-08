@@ -23,6 +23,7 @@ export class FilterComponent implements OnInit, OnDestroy {
   dateTo: Date | null = null;
   sitterFilter = true;
   subs: Subscription;
+  isCollapsed = false;
 
   constructor(private homeService: HomeService) {}
 
@@ -57,6 +58,10 @@ export class FilterComponent implements OnInit, OnDestroy {
         this.dateTo = savedFilters.dateTo;
       }
     });
+  }
+
+  toggleFilters() {
+    this.isCollapsed = !this.isCollapsed;
   }
 
   applyFilters(event: Event) {

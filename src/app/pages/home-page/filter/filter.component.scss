@@ -10,6 +10,14 @@
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden; // Prevent overflow when collapsed
+  transition: max-height 0.3s ease; // Smooth transition for height
+
+  &.collapsed {
+    max-height: 60px; // Hide when collapsed
+    padding: 0; // Remove padding when collapsed
+    opacity: 1; // Fade out when collapsed
+  }
 
   h2 {
     font-size: 24px;
@@ -17,6 +25,7 @@
     text-align: center;
     color: #333;
     margin-bottom: 20px;
+    cursor: pointer;
   }
 
   form {
@@ -99,12 +108,19 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .web-content {
-    max-height: 200px;
-  }
-
   .filters-page {
-    padding: 15px;
+    max-height: 60px;
+    padding: 0; // Remove padding when collapsed
+    opacity: 1; // Fade out when collapsed
+
+    &.collapsed {
+      max-height: 100%; // Hide when collapsed
+      padding: 15px;  
+    }
+
+    h2 {
+      font-size: 20px;
+    }
 
     form .form-group {
       input,
