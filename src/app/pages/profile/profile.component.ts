@@ -40,6 +40,9 @@ export class ProfileComponent {
 
   tempProfile: any = {};
 
+  isAddingPet = false; // To track visibility of the add pet form
+  pets: Array<any> = []; // Initialize with existing pets
+
   constructor(private profileService: ProfileService, private router: Router) {}
 
   ngOnInit() {
@@ -126,6 +129,27 @@ export class ProfileComponent {
       petInfo: { ...this.petInfo },
       sitterInfo: { ...this.sitterInfo },
     };
+  }
+
+  toggleAddPet() {
+    this.isAddingPet = !this.isAddingPet; // Toggle the add pet form
+  }
+
+  onAddPet(form: NgForm) {
+    if (form.valid) {
+      const newPet = {
+        photo: 'default-photo-url.jpg', // You can add a file upload similar to the profile photo
+        name: form.value.name,
+        type: form.value.type,
+        breed: form.value.breed,
+        age: form.value.age,
+        caseHistory: form.value.caseHistory,
+      };
+      this.pets.push(newPet); // Add new pet to the pets array
+      form.reset(); // Reset the form
+      this.isAddingPet = false; // Hide the form
+      alert('Pet added successfully!');
+    }
   }
 
   toggleRole(newRole: 'sitter' | 'petOwner') {
