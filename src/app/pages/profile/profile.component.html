@@ -182,26 +182,36 @@
       </form>
     </div>
     
-    <div *ngFor="let pet of pets">
+    <div class="pet-list">
+      <div class="pet-card">
       <div class="profile-photo">
-        <img [src]="'https://avatars.mds.yandex.net/i?id=e2523a6042990badcc0de02187d39d70a762470a-9107157-images-thumbs&n=13'" alt="{{ pet.name }}" />
+        <img [src]="petInfo.photo" alt="Profile Photo" />
       </div>
-      <p><strong>Name:</strong> {{ pet.name }}</p>
-      <p><strong>Type of Pet:</strong> {{ pet.type }}</p>
-      <p><strong>Breed:</strong> {{ pet.breed }}</p>
-      <p><strong>Age:</strong> {{ pet.age }}</p>
-      <p><strong>About Pet:</strong> {{ pet.caseHistory }}</p>
+      <div class="pet-details">
+      <p><strong>Type of Pet:</strong> {{ petInfo.type }}</p>
+      <p><strong>Name:</strong> {{ petInfo.name }}</p>
+      <p><strong>Breed:</strong> {{ petInfo.breed }}</p>
+      <p><strong>Age:</strong> {{ petInfo.age }}</p>
+      <p><strong>About Pet:</strong> {{ petInfo.caseHistory }}</p>
+      </div> 
+      </div> 
+
+      <div *ngFor="let pet of pets" class="pet-card">
+        <img
+          class="pet-photo"
+          [src]="petInfo.photo"
+          alt="{{ pet.name }}"
+        />
+        <div class="pet-details">
+          <p><strong>Type of pet:</strong> {{ pet.type }}</p>
+          <p><strong>Name:</strong> {{ pet.name }}</p>
+          <p><strong>Breed:</strong> {{ pet.breed }}</p>
+          <p><strong>Age:</strong> {{ pet.age }}</p>
+          <p><strong>About Pet:</strong> {{ pet.caseHistory }}</p>
+        </div>
+      </div>
     </div>
     
-    <div class="profile-photo">
-      <!-- Two-way binding for profile photo -->
-      <img [src]="petInfo.photo" alt="Profile Photo" />
-    </div>
-    <p><strong>Type of Pet:</strong> {{ petInfo.type }}</p>
-    <p><strong>Name:</strong> {{ petInfo.name }}</p>
-    <p><strong>Breed:</strong> {{ petInfo.breed }}</p>
-    <p><strong>Age:</strong> {{ petInfo.age }}</p>
-    <p><strong>About Pet:</strong> {{ petInfo.caseHistory }}</p>
     <div class="availability">
       <label>
         <input type="checkbox" [checked]="shownOwner" (change)="updateAvailabilityMessage('owner')"/>
