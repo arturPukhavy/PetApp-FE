@@ -13,7 +13,7 @@
       <p><strong>Payment:</strong> {{ ownerData?.payment }} Euro</p>
       <p><strong>Case History:</strong> Good</p>
     </div>
-    <button class="btn contact-btn" *ngIf="showContactButton" (click)="confirmBooking()">Contact</button>
+    <button class="btn contact-btn" *ngIf="showContactButton" (click)="confirmBooking()">Request</button>
   </div>
 
   <app-modal *ngIf="bookingConfirmed" (close)="bookingConfirmed = false"></app-modal>
