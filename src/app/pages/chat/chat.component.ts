@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { ChatService } from '../../core/services/chat.service';
 
 
 interface Message {
@@ -11,6 +12,7 @@ interface Message {
 }
 
 interface Chat {
+  id: number;
   name: string;
   avatar: string; // Add avatar for each chat
   messages: Message[];
@@ -24,21 +26,28 @@ interface Chat {
   styleUrls: ['./chat.component.scss'],
 })
 export class ChatComponent implements OnInit {
-  chats: Chat[] = [
-    { name: 'Alice', avatar: 'assets/alice.jpg', messages: [] },
-    { name: 'Bob', avatar: 'assets/bob.jpg', messages: [] },
-    { name: 'Charlie', avatar: 'assets/charlie.jpg', messages: [] }
-  ];
-
+  chats: Chat[] = [];
   selectedChat: Chat | null = null;
   newMessage: string = '';
 
-  constructor( private router: Router) { }
+  constructor(private chatService: ChatService, private router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    // Load chats from the service (or API in the future)
+    this.chatService.getChats().subscribe((chats) => {
+      this.chats = chats;
+    });
+  }
 
   selectChat(chat: Chat) {
     this.selectedChat = chat;
+
+    // Optionally fetch messages for the selected chat (if messages are loaded dynamically)
+    if (chat.id) {
+      this.chatService.getMessages(chat.id).subscribe((messages) => {
+        this.selectedChat!.messages = messages;
+      });
+    }
   }
 
   goToUserInfo() {
@@ -47,14 +56,35 @@ export class ChatComponent implements OnInit {
 
   sendMessage() {
     if (this.newMessage.trim() && this.selectedChat) {
-      const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-      this.selectedChat.messages.push({ text: this.newMessage, sent: true, timestamp });
+      const timestamp = new Date().toLocaleTimeString([], {
+        hour: '2-digit',
+        minute: '2-digit',
+      });
+
+      const newMessage: Message = {
+        text: this.newMessage,
+        sent: true,
+        timestamp,
+      };
+
+      this.selectedChat.messages.push(newMessage);
+
+      // Reset the input field
       this.newMessage = '';
 
-      // Simulate receiving a message
+      // Simulate a response from the service (or backend in the future)
       setTimeout(() => {
-        const responseTimestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-        this.selectedChat?.messages.push({ text: 'This is a response.', sent: false, timestamp: responseTimestamp });
+        const responseTimestamp = new Date().toLocaleTimeString([], {
+          hour: '2-digit',
+          minute: '2-digit',
+        });
+        const responseMessage: Message = {
+          text: 'This is a response.',
+          sent: false,
+          timestamp: responseTimestamp,
+        };
+
+        this.selectedChat?.messages.push(responseMessage);
       }, 1000);
     }
   }
