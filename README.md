@@ -2,6 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.5.
 
+## API
+
+The API has been designed to meet the needs of the service. Additionally, an Open API specification has been created and is available here: https://app.swaggerhub.com/apis/ARTURPUHICE_1/Pet_App_API/1.0.0
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
