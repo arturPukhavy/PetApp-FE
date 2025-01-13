@@ -1,4 +1,5 @@
 # PetApp
+[![PetApp-FE (CD)](https://github.com/arturPukhavy/PetApp-FE/actions/workflows/npm-gulp.yml/badge.svg)](https://github.com/arturPukhavy/PetApp-FE/actions/workflows/npm-gulp.yml)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.5.
 
