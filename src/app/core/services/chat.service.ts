@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { delay, Observable, of } from 'rxjs';
+
 
 interface Message {
   text: string;
@@ -54,6 +55,6 @@ export class ChatService {
   getMessages(chatId: number): Observable<Message[]> {
     // Replace with an HTTP call to fetch messages for a specific chat
     const chat = this.mockChats.find((c) => c.id === chatId);
-    return of(chat ? chat.messages : []);
+    return of(chat ? chat.messages : []).pipe(delay(1000));
   }
 }

@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { ChatService } from '../../core/services/chat.service';
+import { BehaviorSubject, Subscription, switchMap } from 'rxjs';
 
 
 interface Message {
@@ -25,10 +26,14 @@ interface Chat {
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss'],
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent implements OnInit, OnDestroy {
   chats: Chat[] = [];
   selectedChat: Chat | null = null;
   newMessage: string = '';
+  loadingMessages: boolean = false;
+
+  private selectedChatId$ = new BehaviorSubject<number | null>(null); // Store here id for selected chat
+  private subscription: Subscription = new Subscription(); // for unsubscribe
 
   constructor(private chatService: ChatService, private router: Router) {}
 
@@ -37,17 +42,33 @@ export class ChatComponent implements OnInit {
     this.chatService.getChats().subscribe((chats) => {
       this.chats = chats;
     });
+
+    this.subscription.add(
+      this.selectedChatId$
+        .pipe(
+          switchMap((chatId) => {
+            if (chatId === null) {
+              this.selectedChat = null;
+              return [];
+            }
+
+            this.loadingMessages = true;
+
+            return this.chatService.getMessages(chatId);
+          })
+        )
+        .subscribe((messages) => {
+          if (this.selectedChat) {
+            this.selectedChat.messages = messages;
+          }
+          this.loadingMessages = false;
+        })
+    );
   }
 
   selectChat(chat: Chat) {
     this.selectedChat = chat;
-
-    // Optionally fetch messages for the selected chat (if messages are loaded dynamically)
-    if (chat.id) {
-      this.chatService.getMessages(chat.id).subscribe((messages) => {
-        this.selectedChat!.messages = messages;
-      });
-    }
+    this.selectedChatId$.next(chat.id);
   }
 
   goToUserInfo() {
@@ -87,5 +108,9 @@ export class ChatComponent implements OnInit {
         this.selectedChat?.messages.push(responseMessage);
       }, 1000);
     }
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }
