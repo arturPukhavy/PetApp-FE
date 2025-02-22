@@ -4,6 +4,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(135deg, #fef9f3, #f7e6ff);
+  min-height: 100vh;
 }
 
 .sitter-details {
@@ -15,6 +17,7 @@
   width: 100%;
   text-align: center;
   transition: transform 0.3s, box-shadow 0.3s;
+  border: 1px solid #f1f1f1;
 }
 
 .sitter-details:hover {
@@ -24,21 +27,26 @@
 
 h3 {
   font-weight: bold;
-  color: #28a745;
+  color: #ff6f61;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 h2 {
-  font-size: 1.5rem;
-  color: #007BFF;
+  font-size: 1.8rem;
+  color: #8e44ad;
+  margin: 10px 0;
 }
 
 .sitter-image {
   width: 100%;
   max-width: 250px;
-  border-radius: 15px;
+  border-radius: 12px;
   object-fit: cover;
   margin: 20px 0;
   transition: transform 0.3s, box-shadow 0.3s;
+  border: 4px solid #f7e6ff;
 }
 
 .sitter-image:hover {
@@ -63,7 +71,7 @@ h2 {
 
 .contact-btn {
   margin-top: 20px;
-  background: linear-gradient(90deg, #007BFF, #0056b3);
+  background: linear-gradient(90deg, #ff6f61, #d35400);
   color: white;
   padding: 12px 24px;
   border: none;
@@ -75,7 +83,7 @@ h2 {
 }
 
 .contact-btn:hover {
-  background: linear-gradient(90deg, #0056b3, #003a80);
+  background: linear-gradient(90deg, #d35400, #a04000);
   transform: translateY(-2px);
 }
 
