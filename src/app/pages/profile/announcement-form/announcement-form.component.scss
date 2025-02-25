@@ -1,39 +1,45 @@
 .announcement-page {
-  padding: 30px;
-  background-color: #f9f9f9;
+  padding: 40px;
+  background-color: #f0f4f8;
   font-family: 'Roboto', sans-serif;
 
   h1 {
     text-align: center;
-    color: #444;
-    margin-bottom: 20px;
-    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2rem;
   }
 
   .announcement-form {
     max-width: 600px;
     margin: 0 auto;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
   }
 
   .request-details {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
 
     .profile-photo {
       text-align: center;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
 
       img {
-        width: 100px;
-        height: 100px;
+        width: 120px;
+        height: 120px;
         border-radius: 50%;
-        border: 2px solid #ccc;
+        border: 3px solid #f8d7da;
         object-fit: cover;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       }
     }
 
@@ -44,18 +50,18 @@
       label {
         font-weight: bold;
         margin-bottom: 5px;
-        font-size: 0.9rem;
+        font-size: 1rem;
         color: #555;
       }
 
       input, select, textarea {
         width: 100%;
-        padding: 10px;
-        font-size: 0.95rem;
+        padding: 12px;
+        font-size: 1rem;
         border: 1px solid #ddd;
-        border-radius: 5px;
+        border-radius: 8px;
         transition: border-color 0.3s;
-        color: black;
+        color: #333;
 
         &:focus {
           border-color: #007bff;
@@ -72,14 +78,14 @@
   .btn {
     display: block;
     width: 100%;
-    padding: 12px;
+    padding: 14px;
     text-align: center;
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: bold;
     color: #fff;
     background-color: #007bff;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s;
 
