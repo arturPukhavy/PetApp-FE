@@ -1,15 +1,77 @@
 <div class="sign-in-container">
   <div class="sign-in-card">
-    <h1>Welcome!</h1>
-    <p>Please sign in to continue.</p>
-    
+    <h1>{{ isSignUp ? 'Create an Account' : 'Welcome Back!' }}</h1>
+    <p>{{ isSignUp ? 'Sign up to get started.' : 'Sign in to continue.' }}</p>
+
+    <div class="toggle-buttons">
+      <button class="toggle-button" [class.active]="!isSignUp" (click)="toggleMode(false)">Login</button>
+      <button class="toggle-button" [class.active]="isSignUp" (click)="toggleMode(true)">Sign Up</button>
+    </div>
+
+    <form [formGroup]="authForm" (ngSubmit)="onSubmit()" class="sign-in-form">
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          class="input-field"
+          [class.invalid]="authForm.get('email')?.invalid && authForm.get('email')?.touched"
+          placeholder="Enter your email"
+        />
+        <div *ngIf="authForm.get('email')?.invalid && authForm.get('email')?.touched" class="error-message">
+          <span *ngIf="authForm.get('email')?.errors?.['required']">Email is required.</span>
+          <span *ngIf="authForm.get('email')?.errors?.['email']">Invalid email format.</span>
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          class="input-field"
+          [class.invalid]="authForm.get('password')?.invalid && authForm.get('password')?.touched"
+          placeholder="Enter your password"
+        />
+        <div *ngIf="authForm.get('password')?.invalid && authForm.get('password')?.touched" class="error-message">
+          Password is required.
+        </div>
+      </div>
+
+      <!-- Confirm Password -->
+      <div class="form-group" *ngIf="isSignUp">
+        <label for="confirmPassword">Confirm Password</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          formControlName="confirmPassword"
+          class="input-field"
+          [class.invalid]="(authForm.get('confirmPassword')?.invalid || authForm.hasError('passwordMismatch')) && authForm.get('confirmPassword')?.touched"
+          placeholder="Confirm your password"
+        />
+        <div *ngIf="authForm.get('confirmPassword')?.touched" class="error-message">
+          <span *ngIf="authForm.get('confirmPassword')?.errors?.['required']">Confirm password is required.</span>
+          <span *ngIf="authForm.hasError('passwordMismatch')">Passwords do not match.</span>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-button" [disabled]="authForm.invalid">
+        {{ isSignUp ? 'Sign Up' : 'Sign In' }}
+      </button>
+    </form>
+
+    <p class="divider">or</p>
     <button class="google-sign-in" (click)="signInWithGoogle()">
-      <img [src]="'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaa2hwiG4o2vVy3yYZKTBDlqkTuQ0n3KEL2w&s'" alt="Google Logo" />
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaa2hwiG4o2vVy3yYZKTBDlqkTuQ0n3KEL2w&s" alt="Google Logo" />
       Sign in with Google
     </button>
 
     <div class="footer">
-      <p>&copy; 2024 PetCare App</p>
+      <p>© 2024 PetCare App</p>
     </div>
   </div>
 </div>

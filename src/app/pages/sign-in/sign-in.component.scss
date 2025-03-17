@@ -1,16 +1,17 @@
-$primary-color: #4285F4; // Google Blue
+$primary-color: #4285f4; // Google Blue
 $background-color: #f9f9f9;
 $text-color: #333;
 $button-hover-color: darken($primary-color, 10%);
+$error-color: #e74c3c;
 
 .sign-in-container {
   display: flex;
   justify-content: center;
-  align-items: flex-start; // Align container to the top
-  height: 100vh; // Full height of the viewport
+  align-items: flex-start;
+  height: 100vh;
   background-color: $background-color;
   font-family: 'Arial', sans-serif;
-  padding-top: 60px; // Add padding to create space from the top
+  padding-top: 60px;
 
   .sign-in-card {
     background: white;
@@ -18,22 +19,114 @@ $button-hover-color: darken($primary-color, 10%);
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 350px; // Increased width for better layout
-    height: 350px; // Increased height for a taller card
+    width: 400px;
 
     h1 {
       margin-bottom: 10px;
-      font-size: 24px;
+      font-size: 26px;
       color: $text-color;
     }
 
     p {
-      margin-bottom: 40px;
+      margin-bottom: 20px;
       color: #666;
     }
 
+    .toggle-buttons {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+
+      .toggle-button {
+        padding: 10px 20px;
+        font-size: 14px;
+        border: 1px solid $primary-color;
+        background: white;
+        color: $primary-color;
+        cursor: pointer;
+        border-radius: 5px;
+        margin: 0 5px;
+        transition: all 0.3s;
+
+        &.active {
+          background: $primary-color;
+          color: white;
+        }
+
+        &:hover {
+          background: $button-hover-color;
+          color: white;
+        }
+      }
+    }
+
+    .sign-in-form {
+      .form-group {
+        margin-bottom: 15px;
+        text-align: left;
+
+        label {
+          display: block;
+          font-size: 14px;
+          color: $text-color;
+          margin-bottom: 5px;
+        }
+
+        .input-field {
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          font-size: 14px;
+        
+          &:focus {
+            outline: none;
+            border-color: $primary-color;
+            box-shadow: 0 0 5px rgba($primary-color, 0.4);
+          }
+        
+          &.invalid {
+            border-color: $error-color;
+          }
+        }
+        
+        .error-message {
+          font-size: 12px;
+          color: $error-color;
+          margin-top: 5px;
+        }
+      }
+
+      .submit-button {
+        width: 100%;
+        padding: 12px;
+        background-color: $primary-color;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+
+        &:hover {
+          background-color: $button-hover-color;
+        }
+
+        &:disabled {
+          background-color: #ccc;
+          cursor: not-allowed;
+        }
+      }
+    }
+
+    .divider {
+      margin: 20px 0;
+      font-size: 14px;
+      color: #888;
+    }
+
     .google-sign-in {
-      display:inline-flex;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
       background-color: $primary-color;
@@ -44,7 +137,6 @@ $button-hover-color: darken($primary-color, 10%);
       cursor: pointer;
       font-size: 16px;
       transition: background-color 0.3s;
-      margin-top: 20px; // Add margin for spacing
 
       img {
         width: 20px;
