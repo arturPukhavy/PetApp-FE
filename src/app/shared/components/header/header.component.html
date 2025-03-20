@@ -7,9 +7,10 @@
       </div>
       <nav class="nav-tabs">
         <a routerLink="/home" routerLinkActive="active">Home</a>
-        <a routerLink="/chat" routerLinkActive="active">Chat</a>
-        <a routerLink="/profile" routerLinkActive="active">Profile</a>
-        <a routerLink="/sign-in" routerLinkActive="active">Sign in</a>
+        <a *ngIf="isLoggedIn$ | async" routerLink="/chat" routerLinkActive="active">Chat</a>
+        <a *ngIf="isLoggedIn$ | async" routerLink="/profile" routerLinkActive="active">Profile</a>
+        <a *ngIf="!(isLoggedIn$ | async)" routerLink="/sign-in" routerLinkActive="active">Sign in</a>
+        <button *ngIf="isLoggedIn$ | async" (click)="logout()">Logout</button>
         <div class="language-selector">
           <select id="language" (change)="changeLanguage($event)">
             <option value="en">ENG</option>

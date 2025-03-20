@@ -1,7 +1,7 @@
-import { CommonModule, NgClass, NgFor } from '@angular/common';
-import { Component, NgModule, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormGroupDirective, FormGroupName, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
 
 const passwordMatchValidator = (form: FormGroup) => {

@@ -1,31 +1,28 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private apiUrl = '/api/login';
+  private loggedIn = new BehaviorSubject<boolean>(!!localStorage.getItem('jwtToken'));
+  isLoggedIn = this.loggedIn.asObservable();
 
   constructor(private http: HttpClient) {}
 
   login(email: string, password: string): Observable<{ token: string }> {
     console.log('Sending POST request to:', this.apiUrl);
     console.log('Payload:', { email, password });
-    return this.http
-      .post<{ token: string }>(this.apiUrl, { email, password })
-      .pipe(
-        map((response) => {
-          console.log('Response:', response);
-          return response;
-        }),
-        catchError((error) => {
-          console.error('Error details:', error);
-          return this.handleError(error);
-        })
-      );
+    return this.http.post<{ token: string }>(this.apiUrl, { email, password }).pipe(
+      tap(response => {
+        localStorage.setItem('jwtToken', response.token);
+        this.loggedIn.next(true);
+      }),
+      catchError(this.handleError)
+    );
   }
 
   private handleError(error: HttpErrorResponse): Observable<never> {
@@ -37,5 +34,14 @@ export class AuthService {
     }
     console.error(errorMessage);
     return throwError(errorMessage);
+  }
+
+  logout() {
+    localStorage.removeItem('jwtToken');
+    this.loggedIn.next(false);
+  }
+
+  isAuthenticated(): boolean {
+    return this.loggedIn.value;
   }
 }

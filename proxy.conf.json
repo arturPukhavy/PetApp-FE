@@ -3,10 +3,6 @@
     "target": "https://d2xfqyfa5d8vcc.cloudfront.net",
     "secure": true,
     "changeOrigin": true,
-    "pathRewrite": { "^/api": "" },
-    "logLevel": "debug",
-    "headers": {
-      "Content-Type": "application/json"
-    }
+    "logLevel": "debug"
   }
 }
