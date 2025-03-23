@@ -1,7 +1,8 @@
-import { CommonModule, NgClass, NgFor } from '@angular/common';
-import { Component, NgModule, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormGroupDirective, FormGroupName, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router } from '@angular/router';
+import { AuthService } from '../../core/services/auth.service';
 
 const passwordMatchValidator = (form: FormGroup) => {
   const password = form.get('password')?.value;
@@ -19,8 +20,9 @@ const passwordMatchValidator = (form: FormGroup) => {
 export class SignInComponent  implements OnInit {
   authForm: FormGroup;
   isSignUp: boolean = false;
+  errorMessage: string = '';
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) {
     this.authForm = this.fb.group({}); // Initialize to avoid undefined errors
   }
 
@@ -65,10 +67,19 @@ export class SignInComponent  implements OnInit {
     const { email, password } = this.authForm.value;
     if (this.isSignUp) {
       console.log('Sign Up:', { email, password });
+      // Sign-up logic
     } else {
-      console.log('Sign In:', { email, password });
+      this.authService.login(email, password).subscribe(
+        (response) => {
+          console.log('Login successful! JWT Token:', response.token);
+          localStorage.setItem('jwtToken', response.token); // Save token locally (optional)
+          this.router.navigate(['/home']); // Navigate to home on successful login
+        },
+        (error) => {
+          this.errorMessage = error; // Display error message
+        }
+      );
     }
-    this.router.navigate(['/home']);
   }
 
   // Google sign-in

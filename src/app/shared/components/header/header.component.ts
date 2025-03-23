@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { IonicModule, Platform } from '@ionic/angular';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
     standalone: true,
@@ -12,8 +13,9 @@ import { IonicModule, Platform } from '@ionic/angular';
 })
 export class HeaderComponent {
   isNative: boolean;
+  isLoggedIn$ = this.authService.isLoggedIn;
 
-  constructor(private platform: Platform) {
+  constructor(private platform: Platform, private authService: AuthService, private router: Router) {
     this.isNative = this.platform.is('capacitor');
   }
 
@@ -27,6 +29,11 @@ export class HeaderComponent {
     // Save language preference (optional)
     localStorage.setItem('selectedLanguage', language);
     
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/sign-in']);
   }
 
 }

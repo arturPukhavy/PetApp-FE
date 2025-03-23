@@ -19,7 +19,7 @@
 
     .nav-tabs {
       display: flex;
-      gap: 20px;
+      gap: 15px;
       align-items: center;
 
       a {
@@ -40,6 +40,32 @@
       }
     }
 
+    .logout-button {
+      background-color: #f05454;
+      color: #fff;
+      padding: 8px 15px;
+      font-size: 14px;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+
+      &:hover {
+        background-color: #d94343;
+        transform: scale(1.05);
+      }
+
+      &:active {
+        background-color: #c33030;
+      }
+
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(240, 84, 84, 0.4);
+      }
+    }
+  
     .language-selector {
       align-items: center;
       select {
@@ -79,7 +105,7 @@
 
       .nav-tabs {
         display: flex; /* Ensure tabs are in a row */
-        gap: 50px; /* Space between tabs */
+        gap: 10px; /* Space between tabs */
       }
 
       .language-selector {
