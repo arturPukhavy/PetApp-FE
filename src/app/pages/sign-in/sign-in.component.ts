@@ -66,13 +66,19 @@ export class SignInComponent  implements OnInit {
 
     const { email, password } = this.authForm.value;
     if (this.isSignUp) {
-      console.log('Sign Up:', { email, password });
-      // Sign-up logic
+      this.authService.signUp(email, password).subscribe(
+        (response) => {
+          console.log('Sign Up successful! JWT Token:', response.token);
+          this.router.navigate(['/home']);
+        },
+        (error) => {
+          this.errorMessage = error;
+        }
+      );
     } else {
       this.authService.login(email, password).subscribe(
         (response) => {
           console.log('Login successful! JWT Token:', response.token);
-          localStorage.setItem('jwtToken', response.token); // Save token locally (optional)
           this.router.navigate(['/home']); // Navigate to home on successful login
         },
         (error) => {

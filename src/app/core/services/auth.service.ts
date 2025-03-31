@@ -8,6 +8,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class AuthService {
   private apiUrl = '/api/login';
+  private signupUrl = '/api/signup';
   private loggedIn = new BehaviorSubject<boolean>(!!localStorage.getItem('jwtToken'));
   isLoggedIn = this.loggedIn.asObservable();
 
@@ -17,6 +18,18 @@ export class AuthService {
     console.log('Sending POST request to:', this.apiUrl);
     console.log('Payload:', { email, password });
     return this.http.post<{ token: string }>(this.apiUrl, { email, password }).pipe(
+      tap(response => {
+        localStorage.setItem('jwtToken', response.token);
+        this.loggedIn.next(true);
+      }),
+      catchError(this.handleError)
+    );
+  }
+  
+  signUp(email: string, password: string): Observable<{ token: string }> {
+    console.log('Sending POST request to:', this.signupUrl);
+    console.log('Payload:', { email, password });
+    return this.http.post<{ token: string }>(this.signupUrl, { email, password }).pipe(
       tap(response => {
         localStorage.setItem('jwtToken', response.token);
         this.loggedIn.next(true);
