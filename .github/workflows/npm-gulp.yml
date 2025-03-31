@@ -2,11 +2,9 @@ name: PetApp-FE (CD)
 
 on:
   push:
-    branches:
-      - main  # Set this to the branch you want to deploy from
+    branches: [ "main" ]  # Set this to the branch you want to deploy from
   pull_request:
-    branches:
-      - main  # Trigger on pull requests to main
+    branches: [ "main" ]  # Trigger on pull requests to main
 
 jobs:
   build-and-deploy:
